@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectChara : MonoBehaviour
+public class SelectCharaButton : MonoBehaviour
 {
     [SerializeField] private int charaNum;
-    public GameMaster gameMaster;
     [SerializeField] private CharaGenerator charaGenerator;
 
     public void OnClick()
     {
-        gameMaster.charaNum = charaNum;
+        charaGenerator.charaNum = charaNum;
+        if(charaGenerator.isSelect == true)
         charaGenerator.CreateChara(charaGenerator.gridPos);
-
     }
 
 
