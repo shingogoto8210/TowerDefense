@@ -10,7 +10,7 @@ public class SelectCharaButton : MonoBehaviour
     public void OnClick()
     {
         charaGenerator.charaNum = charaNum;
-        if(charaGenerator.isSelect == true)
+        if(charaGenerator.selectPanel.activeSelf == true)
         charaGenerator.CreateChara(charaGenerator.gridPos);
     }
 

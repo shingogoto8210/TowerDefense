@@ -13,25 +13,26 @@ public class CharaGenerator : MonoBehaviour
     public Vector3Int gridPos;
     [SerializeField] private int maxCharaCount;
     private int charaCount;
-    [SerializeField] private GameObject selectPanel;
+    public GameObject selectPanel;
     public bool isSelect;
     
 
     private void Start()
     {
         selectPanel.SetActive(false);
-        isSelect = false;
+        //selectPanel.activeSelf;
+        //isSelect = false;
     }
     void Update()
     {
         //isSelect‚ªtrue‚Ì‚Æ‚«‚ÍgridPos‚ðŽæ“¾‚Å‚«‚È‚¢
-        if (Input.GetMouseButtonDown(0) && charaCount <= maxCharaCount && isSelect ==false) 
+        if (Input.GetMouseButtonDown(0) && charaCount <= maxCharaCount && selectPanel.activeSelf == false) 
         {
             gridPos = grid.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            if (tilemaps.GetColliderType(gridPos) == Tile.ColliderType.None && isSelect == false)
+            if (tilemaps.GetColliderType(gridPos) == Tile.ColliderType.None && selectPanel.activeSelf == false)
             {
                 selectPanel.SetActive(true);
-                isSelect = true;
+                //isSelect = true;
             }
         }
     }
@@ -42,6 +43,6 @@ public class CharaGenerator : MonoBehaviour
         charaCount++;
         chara.transform.position = new Vector2(chara.transform.position.x + 0.5f, chara.transform.position.y + 0.5f);
         selectPanel.SetActive(false);
-        isSelect = false;
+        //isSelect = false;
     }
 }
