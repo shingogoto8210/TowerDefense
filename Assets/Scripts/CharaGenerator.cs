@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 
 public class CharaGenerator : MonoBehaviour
 {
@@ -19,16 +18,18 @@ public class CharaGenerator : MonoBehaviour
 
     private void Start()
     {
-        selectPanel.SetActive(false);
+        //selectPanel.SetActive(false);
         //selectPanel.activeSelf;
         //isSelect = false;
     }
     void Update()
     {
-        //isSelect‚ªtrue‚Ì‚Æ‚«‚ÍgridPos‚ğæ“¾‚Å‚«‚È‚¢
+        //selectPanel‚ªfalse‚Ì‚Æ‚«gridPos‚ğæ“¾‚Å‚«‚é
         if (Input.GetMouseButtonDown(0) && charaCount <= maxCharaCount && selectPanel.activeSelf == false) 
         {
             gridPos = grid.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
+            //gridPos‚ÌColliderType‚ªNone‚Ì‚Æ‚«selectPanel‚ğ•\¦
             if (tilemaps.GetColliderType(gridPos) == Tile.ColliderType.None && selectPanel.activeSelf == false)
             {
                 selectPanel.SetActive(true);
@@ -37,6 +38,10 @@ public class CharaGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// ƒLƒƒƒ‰¶¬
+    /// </summary>
+    /// <param name="gridPos"></param>
     public void CreateChara(Vector3Int gridPos)
     {
         GameObject chara = Instantiate(charaPrefabs[charaNum], gridPos, Quaternion.identity);

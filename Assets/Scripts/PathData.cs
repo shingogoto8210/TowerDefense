@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class PathData : MonoBehaviour
 {
-    public Transform generateTran;
-    public Transform[] pathTranArray;
+    public Transform generateTran; //“G‚Ì¶¬’n“_
+    public Transform[] pathTranArray; //“G‚ÌˆÚ“®Œo˜H‚ğ‡”Ô‚É“o˜^
 }
