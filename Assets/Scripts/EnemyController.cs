@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour
         }
         
         //目標の位置と現在の位置との距離と方向を取得し、正規化処理を行い、単位ベクトルとする(方向の情報は持ちつつ、距離による速度差をなくして一定値にする）
-        Vector3 direction = (paths[index]- transform.position).normalized;
+        Vector3 direction = (transform.position - paths[index]).normalized;
         //Debug.Log(direction);
 
         //アニメーションのPalameterの値を更新し、移動アニメのBlendTreeを制御して移動の方向と移動アニメを同期

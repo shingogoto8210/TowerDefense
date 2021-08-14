@@ -115,5 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108707065f5dcc841b51c24867b43498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathData: {fileID: 0}
+  pathData: {fileID: 1940273693603607770, guid: d56091260d8423e4aa95f181f8ebe88a, type: 3}
   moveSpeed: 30
+  maxHp: 5
+  hp: 0

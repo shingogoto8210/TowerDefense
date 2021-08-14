@@ -7,7 +7,7 @@ public class CharaController : MonoBehaviour
     [SerializeField] private EnemyController enemy;
 
     [SerializeField, Header("UŒ‚‚·‚é‚Ü‚Å‚Ì‘Ò‹@ŽžŠÔ")]
-    private float intervalAttackTIme = 60.0f;
+    private float intervalAttackTime = 60.0f;
 
     [SerializeField, Header("UŒ‚—Í")]
     private int attackPower = 1;
@@ -16,7 +16,7 @@ public class CharaController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //UŒ‚’†‚Å‚Í‚È‚¢ê‡‚ÅA‚©‚ÂA“G‚Ìî•ñ‚ðŒ©Žæ“¾‚Å‚ ‚éê‡
+        //UŒ‚’†‚Å‚Í‚È‚¢ê‡‚ÅA‚©‚ÂA“G‚Ìî•ñ‚ð–¢Žæ“¾‚Å‚ ‚éê‡
         if (!isAttack && !enemy)
         {
             Debug.Log("“G”­Œ©");
@@ -48,7 +48,7 @@ public class CharaController : MonoBehaviour
         {
             timer++;
 
-            if(timer > intervalAttackTIme)
+            if(timer > intervalAttackTime)
             {
                 timer = 0;
 
