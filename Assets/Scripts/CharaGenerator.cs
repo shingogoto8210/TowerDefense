@@ -14,14 +14,7 @@ public class CharaGenerator : MonoBehaviour
     private int charaCount;
     public GameObject selectPanel;
     public bool isSelect;
-    
-
-    private void Start()
-    {
-        //selectPanel.SetActive(false);
-        //selectPanel.activeSelf;
-        //isSelect = false;
-    }
+ 
     void Update()
     {
         //selectPanel‚ªfalse‚Ì‚Æ‚«gridPos‚ğæ“¾‚Å‚«‚é
@@ -42,7 +35,7 @@ public class CharaGenerator : MonoBehaviour
     /// ƒLƒƒƒ‰¶¬
     /// </summary>
     /// <param name="gridPos"></param>
-    public void CreateChara(Vector3Int gridPos)
+    public void CreateChara(/*Vector3Int gridPos*/)
     {
         GameObject chara = Instantiate(charaPrefabs[charaNum], gridPos, Quaternion.identity);
         charaCount++;

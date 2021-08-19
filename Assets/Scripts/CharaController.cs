@@ -5,28 +5,26 @@ using UnityEngine;
 public class CharaController : MonoBehaviour
 {
     [SerializeField] private EnemyController enemy;
-
     [SerializeField, Header("UŒ‚‚·‚é‚Ü‚Å‚Ì‘Ò‹@ŽžŠÔ")]
     private float intervalAttackTime = 60.0f;
-
     [SerializeField, Header("UŒ‚—Í")]
     private int attackPower = 1;
-
     [SerializeField] private bool isAttack;
 
+    private void Update()
+    {
+        Debug.Log(isAttack);
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         //UŒ‚’†‚Å‚Í‚È‚¢ê‡‚ÅA‚©‚ÂA“G‚Ìî•ñ‚ð–¢Žæ“¾‚Å‚ ‚éê‡
         if (!isAttack && !enemy)
         {
             Debug.Log("“G”­Œ©");
-
             //“G‚Ìî•ñ‚ðŽæ“¾‚·‚éBEnemyController‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚éƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ð”»•Ê‚µ‚Ä‚¢‚é‚Ì‚ÅA‚±‚±‚ÅA¡‚Ü‚Å‚ÌTag‚É‚æ‚é”»’è‚Æ“¯‚¶“®ì‚Å”»’è‚ªs‚¦‚é
             if (collision.gameObject.TryGetComponent(out enemy))
             {
-                //î•ñ‚ðŽæ“¾‚Å‚«‚½‚çAUŒ‚‘Ô¨‚É‚·‚é
                 isAttack = true;
-
                 //UŒ‚‚Ì€”õ‚É“ü‚é
                 StartCoroutine(PrepareteAttack());
             }
@@ -40,21 +38,16 @@ public class CharaController : MonoBehaviour
     public IEnumerator PrepareteAttack()
     {
         Debug.Log("UŒ‚€”õŠJŽn");
-
         int timer = 0;
-
-        //UŒ‚’†‚ÌŠÔ‚¾‚¯ƒ‹[ƒvˆ—‚ðŒJ‚è•Ô‚·
         while(isAttack)
         {
             timer++;
-
             if(timer > intervalAttackTime)
             {
                 timer = 0;
 
                 Attack();
             }
-
             yield return null;
         }
     }

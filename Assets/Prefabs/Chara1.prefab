@@ -138,6 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72899c1cee61fc143b1a0852f91c7a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  intervalAttackTime: 60
+  attackPower: 1
+  isAttack: 0
 --- !u!1 &7857918775257272918
 GameObject:
   m_ObjectHideFlags: 0

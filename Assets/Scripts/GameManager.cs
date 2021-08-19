@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isEnemyGenerate = true;
-        StartCoroutine(enemyGenerator.PreparateEnemyGenerate(this));
+        StartCoroutine(enemyGenerator.PrepareteEnemyGenerate(this));
     }
 
     /// <summary>
