@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharaController : MonoBehaviour
 {
@@ -10,10 +11,16 @@ public class CharaController : MonoBehaviour
     [SerializeField, Header("çUåÇóÕ")]
     private int attackPower = 1;
     [SerializeField] private bool isAttack;
+    [SerializeField] private int attackCount;
+    [SerializeField] private Text attackCountText;
 
+    private void Start()
+    {
+         attackCountText.text = attackCount.ToString();
+    }
     private void Update()
     {
-        Debug.Log(isAttack);
+        //Debug.Log(isAttack);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -47,6 +54,12 @@ public class CharaController : MonoBehaviour
                 timer = 0;
 
                 Attack();
+                attackCount--;
+                UpdateDisplayCount();
+                if (attackCount <= 0)
+                {
+                    Destroy(gameObject);
+                }
             }
             yield return null;
         }
@@ -57,9 +70,13 @@ public class CharaController : MonoBehaviour
     /// </summary>
     private void Attack()
     {
-        Debug.Log("çUåÇ");
-        enemy.CulcDamage(attackPower);
+        if (enemy != null)
+        {
+            Debug.Log("çUåÇ");
+            enemy.CulcDamage(attackPower);  
+        }
     }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -69,6 +86,14 @@ public class CharaController : MonoBehaviour
             isAttack = false;
             enemy = null;
         }
+    }
+
+    /// <summary>
+    /// écÇËçUåÇâÒêîÇÃï\é¶çXêV
+    /// </summary>
+    private void UpdateDisplayCount()
+    {
+        attackCountText.text = attackCount.ToString();
     }
 
 }

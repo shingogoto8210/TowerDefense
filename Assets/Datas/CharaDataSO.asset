@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f89ef3a8540d145bc9b71474d986a5, type: 3}
+  m_Name: CharaDataSO
+  m_EditorClassIdentifier: 
+  charaDataList:
+  - charaNo: 0
+    cost: 100
+    charaSprite: {fileID: 570909148861022740, guid: d2447d5e613ec8e4da345927c19f7336, type: 3}
+    charaName: Billy
+    attackPower: 1
+    attackRange: 0
+    intervalAttackTime: 120
+    maxAttackCount: 3
+    discription: "\u6226\u58EB"
+  - charaNo: 1
+    cost: 200
+    charaSprite: {fileID: 21300000, guid: de08b3a5ab4d0aa43ab98dba51f74fd4, type: 2}
+    charaName: Aria
+    attackPower: 2
+    attackRange: 0
+    intervalAttackTime: 200
+    maxAttackCount: 2
+    discription: "\u76D7\u8CCA"
+  - charaNo: 0
+    cost: 0
+    charaSprite: {fileID: 0}
+    charaName: 
+    attackPower: 0
+    attackRange: 0
+    intervalAttackTime: 0
+    maxAttackCount: 0
+    discription: 
+  - charaNo: 0
+    cost: 0
+    charaSprite: {fileID: 0}
+    charaName: 
+    attackPower: 0
+    attackRange: 0
+    intervalAttackTime: 0
+    maxAttackCount: 0
+    discription: 
+  - charaNo: 0
+    cost: 0
+    charaSprite: {fileID: 0}
+    charaName: 
+    attackPower: 0
+    attackRange: 0
+    intervalAttackTime: 0
+    maxAttackCount: 0
+    discription: 

@@ -10,9 +10,12 @@ public class GameManager : MonoBehaviour
     public int generateIntervalTime;
     public int generateEnemyCount;
     public int maxEnemyCount;
+    [SerializeField]
+    private CharaGenerator charaGenerator;
 
     void Start()
     {
+        StartCoroutine(charaGenerator.SetUpCharaGenerator(this));
         isEnemyGenerate = true;
         StartCoroutine(enemyGenerator.PrepareteEnemyGenerate(this));
     }

@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField, Header("最大HP")]
     private int maxHp;
     [SerializeField] private int hp;
+    public int attackPower;
     private Tween tween;
     private Vector3[] paths;
     private Animator anim;
@@ -59,8 +60,19 @@ public class EnemyController : MonoBehaviour
         {
             DestroyEnemy();
         }
+        StartCoroutine(WaitMove());
     }
 
+    /// <summary>
+    /// ヒットムーブ演出
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator WaitMove()
+    {
+        tween.timeScale = 0.05f;
+        yield return new WaitForSeconds(0.5f);
+        tween.timeScale = 1.0f;
+    }
     /// <summary>
     /// 敵破壊処理
     /// </summary>
