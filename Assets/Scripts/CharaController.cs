@@ -13,7 +13,15 @@ public class CharaController : MonoBehaviour
     [SerializeField] private bool isAttack;
     [SerializeField] private int attackCount;
     [SerializeField] private Text attackCountText;
-
+    [SerializeField]
+    private BoxCollider2D attackRangeArea;
+    [SerializeField]
+    private CharaData charaData;
+    private GameManager gameManager;
+    //private SpriteRenderer spriteRenderer;
+    private Animator anim;
+    private string overrideClipName = "Chara0_front";
+    private AnimatorOverrideController overrideController;
     private void Start()
     {
          attackCountText.text = attackCount.ToString();
@@ -55,7 +63,7 @@ public class CharaController : MonoBehaviour
 
                 Attack();
                 attackCount--;
-                UpdateDisplayCount();
+                UpdateDisplayAttackCount();
                 if (attackCount <= 0)
                 {
                     Destroy(gameObject);
@@ -77,7 +85,6 @@ public class CharaController : MonoBehaviour
         }
     }
 
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.tag == "Enemy")
@@ -91,9 +98,51 @@ public class CharaController : MonoBehaviour
     /// <summary>
     /// 残り攻撃回数の表示更新
     /// </summary>
-    private void UpdateDisplayCount()
+    private void UpdateDisplayAttackCount()
     {
         attackCountText.text = attackCount.ToString();
     }
 
+    /// <summary>
+    /// キャラの設定
+    /// </summary>
+    /// <param name="charaData"></param>
+    /// <param name="gameManager"></param>
+    public void SetUpChara(CharaData charaData, GameManager gameManager)
+    {
+        this.charaData = charaData;
+        this.gameManager = gameManager;
+        attackPower = this.charaData.attackPower;
+        intervalAttackTime = this.charaData.intervalAttackTime;
+        attackRangeArea.size = DataBaseManager.instance.GetAttackRangeSize(this.charaData.attackRange);
+        attackCount = this.charaData.maxAttackCount;
+        UpdateDisplayAttackCount();
+        //if(TryGetComponent(out spriteRenderer))
+        //{
+        //spriteRenderer.sprite = this.charaData.charaSprite;
+        //}
+        SetUpAnimation();
+    }
+
+    private void SetUpAnimation()
+    {
+        if(TryGetComponent(out anim))
+        {
+            overrideController = new AnimatorOverrideController();
+            overrideController.runtimeAnimatorController = anim.runtimeAnimatorController;
+            anim.runtimeAnimatorController = overrideController;
+            AnimatorStateInfo[] layerInfo = new AnimatorStateInfo[anim.layerCount];
+            for (int i = 0; i < anim.layerCount; i++)
+            {
+                layerInfo[i] = anim.GetCurrentAnimatorStateInfo(i);
+            }
+                overrideController[overrideClipName] = this.charaData.charaAnim;
+                anim.runtimeAnimatorController = overrideController;
+                anim.Update(0.0f);
+                for(int i = 0; i < anim.layerCount; i++)
+                {
+                    anim.Play(layerInfo[i].fullPathHash, i, layerInfo[i].normalizedTime);
+                }
+        }
+    }
 }

@@ -941,6 +941,15 @@ MonoBehaviour:
   btnClosePopUp: {fileID: 3238353498780515322}
   btnChooseChara: {fileID: 3238353497376460155}
   canvasGroup: {fileID: 6245347728724263117}
+  imgPickupChara: {fileID: 3238353498304406099}
+  txtPickupCharaName: {fileID: 8965524841386312405}
+  txtPickupCharaAttackPower: {fileID: 7442490704503270589}
+  txtPickupCharaAttackRangeType: {fileID: 267425025216670792}
+  txtPickupCharaCost: {fileID: 1858462235982824814}
+  txtPickupCharaMaxAttackCount: {fileID: 4517639650936771095}
+  selectCharaDetailPrefab: {fileID: 6122847731784615065, guid: 19e99a97d82bdac44919d01ef754893f, type: 3}
+  selectCharaDetailTran: {fileID: 3238353496978024886}
+  selectCharaDetailsList: []
 --- !u!225 &6245347728724263117
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2275,8 +2284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 162, y: 104.50003}
-  m_SizeDelta: {x: 0.000015258789, y: -29.000061}
+  m_AnchoredPosition: {x: 162, y: 119.00003}
+  m_SizeDelta: {x: 0.000015258789, y: -0.000061035156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5074581062362239165
 CanvasRenderer:

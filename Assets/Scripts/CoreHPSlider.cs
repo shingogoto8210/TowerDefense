@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class CoreHPSlider : MonoBehaviour
 {
@@ -12,13 +13,19 @@ public class CoreHPSlider : MonoBehaviour
     {
         coreHP = transform.root.gameObject.GetComponent<Core>().currentCoreHP;
         slider = GetComponent<Slider>();
-        slider.value = coreHP;
         slider.maxValue = coreHP;
+        UpdateSlider(coreHP);
+        //slider.value = coreHP;
     }
 
-    void Update()
+    //void Update()
+    //{
+    //    coreHP = transform.root.gameObject.GetComponent<Core>().currentCoreHP;
+    //    slider.value = coreHP;
+    //}
+
+    public void UpdateSlider(int currentCoreHP)
     {
-        coreHP = transform.root.gameObject.GetComponent<Core>().currentCoreHP;
-        slider.value = coreHP;
+        slider.DOValue(currentCoreHP, 0.5f);
     }
 }

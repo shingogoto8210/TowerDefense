@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 696588989728920907}
   - component: {fileID: 6691324925528611390}
   m_Layer: 0
-  m_Name: Chara0
+  m_Name: Chara
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +234,7 @@ SpriteRenderer:
   m_SortingLayerID: 1774630763
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8654730522281584288, guid: d2447d5e613ec8e4da345927c19f7336, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -242,7 +242,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &2703048759186448901
@@ -303,6 +303,18 @@ MonoBehaviour:
   isAttack: 0
   attackCount: 3
   attackCountText: {fileID: 7985015995468249219}
+  attackRangeArea: {fileID: 6958721529251682128}
+  charaData:
+    charaNo: 0
+    cost: 0
+    charaSprite: {fileID: 0}
+    charaName: 
+    attackPower: 0
+    attackRange: 0
+    intervalAttackTime: 0
+    maxAttackCount: 0
+    discription: 
+    charaAnim: {fileID: 0}
 --- !u!1 &8425287292366334440
 GameObject:
   m_ObjectHideFlags: 0

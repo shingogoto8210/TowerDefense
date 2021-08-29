@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class Core : MonoBehaviour
 {
-    private EnemyController enemy;
+    //private EnemyController enemy;
     [Header("‘Ï‹v’l")] public int coreHP;
     public int currentCoreHP;
+    [SerializeField]
+    private CoreHPSlider coreHPSlider;
 
     private void Start()
     {
@@ -16,9 +18,10 @@ public class Core : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out enemy))
+        if (collision.gameObject.TryGetComponent(out EnemyController enemy))
         {
             currentCoreHP = Mathf.Clamp(currentCoreHP - enemy.attackPower, 0, coreHP);
+            coreHPSlider.UpdateSlider(currentCoreHP);
             if(currentCoreHP <= 0)
             {
                 Debug.Log("Game Over");

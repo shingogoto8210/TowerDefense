@@ -5,12 +5,16 @@ using UnityEngine.Tilemaps;
 
 public class CharaGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject charaPrefab;
-    public int charaNum;
-    [SerializeField] private Grid grid;
-    [SerializeField] private Tilemap tilemaps;
-    public Vector3Int gridPos;
-    [SerializeField] private int maxCharaCount;
+    //[SerializeField] private GameObject charaPrefab;
+    [SerializeField]
+    private CharaController charaControllerPrefab;
+    [SerializeField] 
+    private Grid grid;
+    [SerializeField]
+    private Tilemap tilemaps;
+    private Vector3Int gridPos;
+    [SerializeField]
+    private int maxCharaCount;
     private int charaCount;
     //public GameObject selectPanel;
     //public bool isSelect;
@@ -20,12 +24,15 @@ public class CharaGenerator : MonoBehaviour
     private Transform canvasTran;
     private PlacementCharaSelectPopUp placementCharaSelectPopUp;
     private GameManager gameManager;
+    [SerializeField]
+    private List<CharaData> charaDatasList = new List<CharaData>();
  
     void Update()
     {
         //selectPanelがfalseのときgridPosを取得できる
         if (Input.GetMouseButtonDown(0) && charaCount <= maxCharaCount && !placementCharaSelectPopUp.gameObject.activeSelf) 
         {
+            //マウスクリックの位置を取得してワールド座標に変換し，それをさらにタイルのセル座標に変換
             gridPos = grid.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
             //gridPosのColliderTypeがNoneのときselectPanelを表示
@@ -42,14 +49,14 @@ public class CharaGenerator : MonoBehaviour
     /// キャラ生成
     /// </summary>
     /// <param name="gridPos"></param>
-    public void CreateChara(/*Vector3Int gridPos*/)
-    {
-        GameObject chara = Instantiate(charaPrefab, gridPos, Quaternion.identity);
-        charaCount++;
-        chara.transform.position = new Vector2(chara.transform.position.x + 0.5f, chara.transform.position.y + 0.5f);
+    //public void CreateChara()
+    //{
+        //GameObject chara = Instantiate(charaPrefab, gridPos, Quaternion.identity);
+        //charaCount++;
+        //chara.transform.position = new Vector2(chara.transform.position.x + 0.5f, chara.transform.position.y + 0.5f);
         //selectPanel.SetActive(false);
         //isSelect = false;
-    }
+    //}
 
     /// <summary>
     /// 設定
@@ -59,13 +66,14 @@ public class CharaGenerator : MonoBehaviour
     public IEnumerator SetUpCharaGenerator(GameManager gameManager)
     {
         this.gameManager = gameManager;
+        CreateHaveCharaDatasList();
         yield return StartCoroutine(CreatePlacementCharaSelectPopUp());
     }
 
     private IEnumerator CreatePlacementCharaSelectPopUp()
     {
         placementCharaSelectPopUp = Instantiate(placementCharaSelectPopUpPrefab, canvasTran, false);
-        placementCharaSelectPopUp.SetUpPlacementCharaSelectPopUp(this);
+        placementCharaSelectPopUp.SetUpPlacementCharaSelectPopUp(this, charaDatasList);
         placementCharaSelectPopUp.gameObject.SetActive(false);
         yield return null;
     }
@@ -78,5 +86,25 @@ public class CharaGenerator : MonoBehaviour
     public void InactivatePlacementCharaSelectPopUp()
     {
         placementCharaSelectPopUp.gameObject.SetActive(false);
+    }
+
+    private void CreateHaveCharaDatasList()
+    {
+        for(int i = 0; i < DataBaseManager.instance.charaDataSO.charaDataList.Count; i++)
+        {
+            charaDatasList.Add(DataBaseManager.instance.charaDataSO.charaDataList[i]);
+        }
+    }
+
+    /// <summary>
+    /// 選択したキャラを生成して配置
+    /// </summary>
+    /// <param name="charaData"></param>
+    public void CreateChooseChara(CharaData charaData)
+    {
+        CharaController chara = Instantiate(charaControllerPrefab, gridPos, Quaternion.identity);
+        chara.transform.position = new Vector2(chara.transform.position.x + 0.5f, chara.transform.position.y + 0.5f);
+        chara.SetUpChara(charaData,gameManager);
+        Debug.Log(charaData.charaName);
     }
 }
