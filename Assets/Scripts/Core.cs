@@ -10,6 +10,8 @@ public class Core : MonoBehaviour
     public int currentCoreHP;
     [SerializeField]
     private CoreHPSlider coreHPSlider;
+    [SerializeField]
+    //private GameManager gameManager;
 
     private void Start()
     {

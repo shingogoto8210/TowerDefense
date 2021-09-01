@@ -30,7 +30,7 @@ public class CharaGenerator : MonoBehaviour
     void Update()
     {
         //selectPanelがfalseのときgridPosを取得できる
-        if (Input.GetMouseButtonDown(0) && charaCount <= maxCharaCount && !placementCharaSelectPopUp.gameObject.activeSelf) 
+        if (Input.GetMouseButtonDown(0) && charaCount <= maxCharaCount && !placementCharaSelectPopUp.gameObject.activeSelf && gameManager.currentGameState == GameManager.GameState.Play) 
         {
             //マウスクリックの位置を取得してワールド座標に変換し，それをさらにタイルのセル座標に変換
             gridPos = grid.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -79,6 +79,8 @@ public class CharaGenerator : MonoBehaviour
     }
     private void ActivatePlacementCharaSelectPopUp()
     {
+        gameManager.SetGameState(GameManager.GameState.Stop);
+        gameManager.PauseEnemies();
         placementCharaSelectPopUp.gameObject.SetActive(true);
         placementCharaSelectPopUp.ShowPopUp();
     }
@@ -86,6 +88,8 @@ public class CharaGenerator : MonoBehaviour
     public void InactivatePlacementCharaSelectPopUp()
     {
         placementCharaSelectPopUp.gameObject.SetActive(false);
+        gameManager.SetGameState(GameManager.GameState.Play);
+        gameManager.ResumeEnemies();
     }
 
     private void CreateHaveCharaDatasList()
@@ -104,6 +108,7 @@ public class CharaGenerator : MonoBehaviour
     {
         CharaController chara = Instantiate(charaControllerPrefab, gridPos, Quaternion.identity);
         chara.transform.position = new Vector2(chara.transform.position.x + 0.5f, chara.transform.position.y + 0.5f);
+        charaCount++;
         chara.SetUpChara(charaData,gameManager);
         Debug.Log(charaData.charaName);
     }

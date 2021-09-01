@@ -12,18 +12,20 @@ public class EnemyController : MonoBehaviour
     private float moveSpeed;
     [SerializeField, Header("ç≈ëÂHP")]
     private int maxHp;
-    [SerializeField] private int hp;
+    public int hp;
     public int attackPower;
     private Tween tween;
     private Vector3[] paths;
     private Animator anim;
+    private GameManager gameManager;
 
     /// <summary>
     /// ìGÇÃê›íË
     /// </summary>
     /// <param name="pathssData"></param>
-    public void SetUpEnemyController(Vector3[] pathsData)
+    public void SetUpEnemyController(Vector3[] pathsData,GameManager gameManager)
     {
+        this.gameManager = gameManager;
         hp = maxHp;
         TryGetComponent(out anim);
         paths = pathsData;
@@ -80,6 +82,7 @@ public class EnemyController : MonoBehaviour
     {
         tween.Kill();
         Destroy(gameObject);
+        gameManager.CountUpDestroyEnemyCount(this);
     }
 
     /// <summary>

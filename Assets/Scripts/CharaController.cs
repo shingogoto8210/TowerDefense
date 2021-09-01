@@ -35,7 +35,7 @@ public class CharaController : MonoBehaviour
         //攻撃中ではない場合で、かつ、敵の情報を未取得である場合
         if (!isAttack && !enemy)
         {
-            Debug.Log("敵発見");
+            //Debug.Log("敵発見");
             //敵の情報を取得する。EnemyControllerがアタッチされているゲームオブジェクトを判別しているので、ここで、今までのTagによる判定と同じ動作で判定が行える
             if (collision.gameObject.TryGetComponent(out enemy))
             {
