@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
     private CharaGenerator charaGenerator;
     private int destroyEnemyCount;
     [SerializeField]
-    private UIManager uiManager;
+    public UIManager uiManager;
+    [SerializeField]
+    private List<CharaController> charaList = new List<CharaController>();
 
     public enum GameState
     {
@@ -121,5 +123,35 @@ public class GameManager : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    /// <summary>
+    /// 選択したキャラの情報をListに追加
+    /// </summary>
+    /// <param name="chara"></param>
+    public void AddCharaList(CharaController chara)
+    {
+        charaList.Add(chara);
+        //キャラ数カウント
+        GameData.instance.charaPlacementCount++;
+    } 
+
+    /// <summary>
+    /// 選択したキャラを破棄し，情報をListから削除
+    /// </summary>
+    /// <param name="chara"></param>
+    public void RemoveCharaList(CharaController chara)
+    {
+        Destroy(chara.gameObject);
+        charaList.Remove(chara);
+    }
+
+    /// <summary>
+    /// 現在の配置しているキャラ数の取得
+    /// </summary>
+    /// <returns></returns>
+    public int GetPlacementCharaCount()
+    {
+        return charaList.Count;
     }
 }

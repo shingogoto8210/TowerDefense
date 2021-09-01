@@ -42,4 +42,28 @@ public class SelectCharaDetail : MonoBehaviour
         //タップしたSelectCharaDetailの情報をポップアップに送る
         placementCharaSelectPopUp.SetSelectCharaDetail(charaData);
     }
+
+    public bool JudgePermissionCost(int currency)
+    {
+        if (charaData.cost <= currency)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void ChangeActiveButton(bool isButtonActive)
+    {
+        if (isButtonActive)
+        {
+            btnSelectCharaDetail.interactable = true;
+        }
+        else
+        {
+            btnSelectCharaDetail.interactable = false;
+        }
+    }
 }

@@ -28,6 +28,7 @@ public class CharaController : MonoBehaviour
     }
     private void Update()
     {
+      
         //Debug.Log(isAttack);
     }
     private void OnTriggerStay2D(Collider2D collision)

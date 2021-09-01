@@ -29,8 +29,12 @@ public class CharaGenerator : MonoBehaviour
  
     void Update()
     {
+        if (gameManager.GetPlacementCharaCount() >= maxCharaCount)
+        {
+            return;
+        }
         //selectPanelがfalseのときgridPosを取得できる
-        if (Input.GetMouseButtonDown(0) && charaCount <= maxCharaCount && !placementCharaSelectPopUp.gameObject.activeSelf && gameManager.currentGameState == GameManager.GameState.Play) 
+        if (Input.GetMouseButtonDown(0) && !placementCharaSelectPopUp.gameObject.activeSelf && gameManager.currentGameState == GameManager.GameState.Play) 
         {
             //マウスクリックの位置を取得してワールド座標に変換し，それをさらにタイルのセル座標に変換
             gridPos = grid.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -44,19 +48,6 @@ public class CharaGenerator : MonoBehaviour
             }
         }
     }
-
-    /// <summary>
-    /// キャラ生成
-    /// </summary>
-    /// <param name="gridPos"></param>
-    //public void CreateChara()
-    //{
-        //GameObject chara = Instantiate(charaPrefab, gridPos, Quaternion.identity);
-        //charaCount++;
-        //chara.transform.position = new Vector2(chara.transform.position.x + 0.5f, chara.transform.position.y + 0.5f);
-        //selectPanel.SetActive(false);
-        //isSelect = false;
-    //}
 
     /// <summary>
     /// 設定
@@ -77,6 +68,10 @@ public class CharaGenerator : MonoBehaviour
         placementCharaSelectPopUp.gameObject.SetActive(false);
         yield return null;
     }
+
+    /// <summary>
+    /// 配置キャラ選択用のポップアップの表示
+    /// </summary>
     private void ActivatePlacementCharaSelectPopUp()
     {
         gameManager.SetGameState(GameManager.GameState.Stop);
@@ -85,13 +80,23 @@ public class CharaGenerator : MonoBehaviour
         placementCharaSelectPopUp.ShowPopUp();
     }
 
+    /// <summary>
+    /// 配置キャラ選択用のポップアップの非表示
+    /// </summary>
     public void InactivatePlacementCharaSelectPopUp()
     {
         placementCharaSelectPopUp.gameObject.SetActive(false);
-        gameManager.SetGameState(GameManager.GameState.Play);
-        gameManager.ResumeEnemies();
+        if (gameManager.currentGameState == GameManager.GameState.Stop)
+        {
+            gameManager.SetGameState(GameManager.GameState.Play);
+            gameManager.ResumeEnemies();
+            StartCoroutine(gameManager.TimeToCurrency());
+        }
     }
 
+    /// <summary>
+    /// キャラのデータのリスト化
+    /// </summary>
     private void CreateHaveCharaDatasList()
     {
         for(int i = 0; i < DataBaseManager.instance.charaDataSO.charaDataList.Count; i++)
@@ -106,10 +111,13 @@ public class CharaGenerator : MonoBehaviour
     /// <param name="charaData"></param>
     public void CreateChooseChara(CharaData charaData)
     {
+        GameData.instance.currency -= charaData.cost;
+        gameManager.uiManager.UpdateDisplayCurrency();
         CharaController chara = Instantiate(charaControllerPrefab, gridPos, Quaternion.identity);
         chara.transform.position = new Vector2(chara.transform.position.x + 0.5f, chara.transform.position.y + 0.5f);
         charaCount++;
         chara.SetUpChara(charaData,gameManager);
         Debug.Log(charaData.charaName);
+        gameManager.AddCharaList(chara);
     }
 }

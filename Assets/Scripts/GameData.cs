@@ -13,6 +13,8 @@ public class GameData : MonoBehaviour
     public int currencyIntervalTimer;
     [Header("’Ê‰İ‚Ì‰ÁZ•ª")]
     public int addCurrencyPoint;
+    [Header("¶¬‚µ‚½ƒLƒƒƒ‰‚Ì”")]
+    public int charaPlacementCount;
 
 
     private void Awake()
