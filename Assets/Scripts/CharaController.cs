@@ -26,11 +26,6 @@ public class CharaController : MonoBehaviour
     {
          attackCountText.text = attackCount.ToString();
     }
-    private void Update()
-    {
-      
-        //Debug.Log(isAttack);
-    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         //UŒ‚’†‚Å‚Í‚È‚¢ê‡‚ÅA‚©‚ÂA“G‚Ìî•ñ‚ð–¢Žæ“¾‚Å‚ ‚éê‡
@@ -57,17 +52,21 @@ public class CharaController : MonoBehaviour
         int timer = 0;
         while(isAttack)
         {
-            timer++;
-            if(timer > intervalAttackTime)
+            if (gameManager.currentGameState == GameManager.GameState.Play)
             {
-                timer = 0;
-
-                Attack();
-                attackCount--;
-                UpdateDisplayAttackCount();
-                if (attackCount <= 0)
+                timer++;
+                if (timer > intervalAttackTime)
                 {
-                    Destroy(gameObject);
+                    timer = 0;
+
+                    Attack();
+                    attackCount--;
+                    UpdateDisplayAttackCount();
+                    if (attackCount <= 0)
+                    {
+                        Destroy(gameObject);
+                        gameManager.RemoveCharaList(this);
+                    }
                 }
             }
             yield return null;

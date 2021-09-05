@@ -45,25 +45,16 @@ public class SelectCharaDetail : MonoBehaviour
 
     public bool JudgePermissionCost(int currency)
     {
-        if (charaData.cost <= currency)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return charaData.cost <= currency ? true : false;
+        //if (charaData.cost <= currency)
+        //{
+            //return true;
+        //}
+            //return false;
     }
 
     public void ChangeActiveButton(bool isButtonActive)
     {
-        if (isButtonActive)
-        {
-            btnSelectCharaDetail.interactable = true;
-        }
-        else
-        {
-            btnSelectCharaDetail.interactable = false;
-        }
+            btnSelectCharaDetail.interactable = isButtonActive;
     }
 }
