@@ -11,7 +11,7 @@ public class CoreHPSlider : MonoBehaviour
 
     void Start()
     {
-        coreHP = transform.root.gameObject.GetComponent<Core>().currentCoreHP;
+        coreHP = transform.root.gameObject.GetComponent<Core>().defenseBaseDurability;
         slider = GetComponent<Slider>();
         slider.maxValue = coreHP;
         UpdateSlider(coreHP);

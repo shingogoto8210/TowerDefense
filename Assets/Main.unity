@@ -2646,7 +2646,7 @@ GameObject:
   - component: {fileID: 917607860}
   - component: {fileID: 917607864}
   m_Layer: 0
-  m_Name: Core
+  m_Name: DefenseBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2752,8 +2752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf9c2259141ea5749a12fd70bc487f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coreHP: 5
-  currentCoreHP: 0
+  maxDefenseBaseDurability: 0
+  defenseBaseDurability: 3
   coreHPSlider: {fileID: 1098373969}
 --- !u!1 &949619994
 GameObject:
@@ -3373,6 +3373,8 @@ MonoBehaviour:
   currencyIntervalTimer: 120
   addCurrencyPoint: 100
   charaPlacementCount: 0
+  isDebug: 0
+  defenseBaseDurability: 1
 --- !u!4 &1612965525
 Transform:
   m_ObjectHideFlags: 0

@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Core : MonoBehaviour
 {
     //private EnemyController enemy;
-    [Header("‘Ï‹v’l")] public int coreHP;
-    public int currentCoreHP;
+    [Header("‘Ï‹v’l")]
+    public int maxDefenseBaseDurability;
+    public int defenseBaseDurability;
     [SerializeField]
     private CoreHPSlider coreHPSlider;
     [SerializeField]
@@ -15,16 +16,25 @@ public class Core : MonoBehaviour
 
     private void Start()
     {
-        currentCoreHP = coreHP;
+        if (GameData.instance.isDebug)
+        {
+            maxDefenseBaseDurability = GameData.instance.defenseBaseDurability;
+        }
+        else
+        {
+            maxDefenseBaseDurability = defenseBaseDurability;
+        }
+        defenseBaseDurability = maxDefenseBaseDurability;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out EnemyController enemy))
         {
-            currentCoreHP = Mathf.Clamp(currentCoreHP - enemy.attackPower, 0, coreHP);
-            coreHPSlider.UpdateSlider(currentCoreHP);
-            if(currentCoreHP <= 0)
+            defenseBaseDurability = Mathf.Clamp(defenseBaseDurability - enemy.attackPower, 0, maxDefenseBaseDurability);
+            coreHPSlider.UpdateSlider(defenseBaseDurability);
+            if(defenseBaseDurability <= 0)
             {
                 Debug.Log("Game Over");
             }

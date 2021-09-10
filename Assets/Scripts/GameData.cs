@@ -15,6 +15,9 @@ public class GameData : MonoBehaviour
     public int addCurrencyPoint;
     [Header("生成したキャラの数")]
     public int charaPlacementCount;
+    [Header("デバッグモードの切り替え")]
+    public bool isDebug; //trueの場合，デバッグモードとする
+    public int defenseBaseDurability;
 
 
     private void Awake()
