@@ -18,13 +18,18 @@ public class EnemyController : MonoBehaviour
     private Vector3[] paths;
     private Animator anim;
     private GameManager gameManager;
+    public EnemyDataSO.EnemyData enemyData;
 
     /// <summary>
     /// ìGÇÃê›íË
     /// </summary>
     /// <param name="pathssData"></param>
-    public void SetUpEnemyController(Vector3[] pathsData,GameManager gameManager)
+    public void SetUpEnemyController(Vector3[] pathsData,GameManager gameManager,EnemyDataSO.EnemyData enemyData)
     {
+        this.enemyData = enemyData;
+        moveSpeed = this.enemyData.moveSpeed;
+        attackPower = this.enemyData.attackPower;
+        maxHp = this.enemyData.hp;
         this.gameManager = gameManager;
         hp = maxHp;
         TryGetComponent(out anim);

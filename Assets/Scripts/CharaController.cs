@@ -145,4 +145,9 @@ public class CharaController : MonoBehaviour
                 }
         }
     }
+
+    public void OnClickChara()
+    {
+        gameManager.PrepareteCreateCharaPopUp(this);
+    }
 }

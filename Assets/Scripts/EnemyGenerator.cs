@@ -26,7 +26,6 @@ public class EnemyGenerator : MonoBehaviour
                 if (timer > gameManager.generateIntervalTime)
                 {
                     timer = 0;
-                    //GenerateEnemy();
                     gameManager.AddEnemyList(GenerateEnemy());
                     gameManager.JudgeGenerateEnemyEnd();
                 }
@@ -40,7 +39,8 @@ public class EnemyGenerator : MonoBehaviour
         int randomValue = Random.Range(0, pathDatas.Length);
         EnemyController enemyController = Instantiate(enemyControllerPrefab, pathDatas[randomValue].generateTran.position, Quaternion.identity);
         Vector3[] paths = pathDatas[randomValue].pathTranArray.Select(x => x.position).ToArray();
-        enemyController.SetUpEnemyController(paths,gameManager);
+        int enemyNo = Random.Range(0, DataBaseManager.instance.enemyDataSO.enemyDatasList.Count);
+        enemyController.SetUpEnemyController(paths,gameManager,DataBaseManager.instance.enemyDataSO.enemyDatasList.Find(x => x.enemyNo == enemyNo));
         StartCoroutine(PreparateCreatePathLine(paths, enemyController));
         return enemyController;
     }
