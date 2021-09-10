@@ -3153,7 +3153,7 @@ MonoBehaviour:
   charaControllerPrefab: {fileID: 6691324925528611390, guid: 4de57f956fa4ab14d9942b5376414e9b, type: 3}
   grid: {fileID: 125273318}
   tilemaps: {fileID: 1753054611}
-  maxCharaCount: 10
+  maxCharaCount: 3
   placementCharaSelectPopUpPrefab: {fileID: 2110826125182023095, guid: 0a68acf8e5eb6b8499ed1baba9704147, type: 3}
   canvasTran: {fileID: 451751982}
   charaDatasList: []

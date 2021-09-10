@@ -20,6 +20,7 @@ MonoBehaviour:
     moveSpeed: 30
     enemyType: 0
     itemDropRate: 0
+    enemyOverrideController: {fileID: 22100000, guid: 215dc326060990e49ac8998010aad382, type: 2}
   - enemyName: Yan
     enemyNo: 1
     hp: 1
@@ -27,6 +28,7 @@ MonoBehaviour:
     moveSpeed: 50
     enemyType: 0
     itemDropRate: 0
+    enemyOverrideController: {fileID: 22100000, guid: 4fddf55f814e80343a1102bff202f0e5, type: 2}
   - enemyName: Winx
     enemyNo: 2
     hp: 2
@@ -34,3 +36,4 @@ MonoBehaviour:
     moveSpeed: 40
     enemyType: 2
     itemDropRate: 0
+    enemyOverrideController: {fileID: 22100000, guid: 4b2725e0b885e294c9ac50c0892fbaa4, type: 2}

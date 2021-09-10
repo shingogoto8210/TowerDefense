@@ -32,7 +32,10 @@ public class EnemyController : MonoBehaviour
         maxHp = this.enemyData.hp;
         this.gameManager = gameManager;
         hp = maxHp;
-        TryGetComponent(out anim);
+        if(TryGetComponent(out anim))
+        {
+            SetUpAnimation();
+        }
         paths = pathsData;
         //OnWaypointChange(x => ChangeAnimeDirection(x))
         tween = transform.DOPath(paths, 1000 / moveSpeed).SetEase(Ease.Linear).OnWaypointChange(ChangeAnimeDirection);
@@ -104,5 +107,13 @@ public class EnemyController : MonoBehaviour
     public void ResumeMove()
     {
         tween.Play();
+    }
+
+    private void SetUpAnimation()
+    {
+        if(enemyData.enemyOverrideController != null)
+        {
+            anim.runtimeAnimatorController = enemyData.enemyOverrideController;
+        }
     }
 }
