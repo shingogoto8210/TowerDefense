@@ -8,6 +8,7 @@ public class DataBaseManager : MonoBehaviour
     public CharaDataSO charaDataSO;
     public AttackRangeSizeSO attackRangeSizeSO;
     public EnemyDataSO enemyDataSO;
+    public StageDataSO stageDataSO;
     private void Awake()
     {
         if(instance == null)

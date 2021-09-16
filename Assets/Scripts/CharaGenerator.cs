@@ -29,6 +29,10 @@ public class CharaGenerator : MonoBehaviour
  
     void Update()
     {
+        if(gameManager == null)
+        {
+            return;
+        }
         if (gameManager.GetPlacementCharaCount() >= maxCharaCount)
         {
             return;
@@ -119,5 +123,15 @@ public class CharaGenerator : MonoBehaviour
         chara.SetUpChara(charaData,gameManager);
         Debug.Log(charaData.charaName);
         gameManager.AddCharaList(chara);
+    }
+
+    public void SetUpMapInfo (Tilemap tilemaps)
+    {
+        this.tilemaps = tilemaps;
+    }
+
+    public void SetUpMapInfoGrid(Grid grid)
+    {
+        this.grid = grid;
     }
 }

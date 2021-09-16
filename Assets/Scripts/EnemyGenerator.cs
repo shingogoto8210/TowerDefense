@@ -34,16 +34,18 @@ public class EnemyGenerator : MonoBehaviour
         }
     }
 
-    public EnemyController GenerateEnemy(int generateNo = 0)
+    public EnemyController GenerateEnemy()
     {
         int randomValue = Random.Range(0, pathDatas.Length);
         EnemyController enemyController = Instantiate(enemyControllerPrefab, pathDatas[randomValue].generateTran.position, Quaternion.identity);
         Vector3[] paths = pathDatas[randomValue].pathTranArray.Select(x => x.position).ToArray();
         int enemyNo = Random.Range(0, DataBaseManager.instance.enemyDataSO.enemyDatasList.Count);
-        enemyController.SetUpEnemyController(paths,gameManager,DataBaseManager.instance.enemyDataSO.enemyDatasList.Find(x => x.enemyNo == enemyNo));
+        enemyController.SetUpEnemyController(paths, gameManager, DataBaseManager.instance.enemyDataSO.enemyDatasList[enemyNo]); //.Find(x => x.enemyNo == enemyNo));
         StartCoroutine(PreparateCreatePathLine(paths, enemyController));
         return enemyController;
     }
+
+   
 
     private IEnumerator PreparateCreatePathLine(Vector3[] paths, EnemyController enemyController)
     {
@@ -70,5 +72,11 @@ public class EnemyGenerator : MonoBehaviour
             Destroy(drawPathLinesList[i].gameObject);
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    public void SetUpPathDatas(PathData[] pathDatas)
+    {
+        this.pathDatas = new PathData[pathDatas.Length];
+        this.pathDatas = pathDatas;
     }
 }

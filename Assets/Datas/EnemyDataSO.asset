@@ -37,3 +37,27 @@ MonoBehaviour:
     enemyType: 2
     itemDropRate: 0
     enemyOverrideController: {fileID: 22100000, guid: 4b2725e0b885e294c9ac50c0892fbaa4, type: 2}
+  - enemyName: hyui
+    enemyNo: 3
+    hp: 3
+    attackPower: 1
+    moveSpeed: 50
+    enemyType: 0
+    itemDropRate: 0
+    enemyOverrideController: {fileID: 22100000, guid: f7fe17ca683324c48ad0fc9f7684ea24, type: 2}
+  - enemyName: tacit
+    enemyNo: 4
+    hp: 5
+    attackPower: 2
+    moveSpeed: 60
+    enemyType: 1
+    itemDropRate: 0
+    enemyOverrideController: {fileID: 22100000, guid: b3bfb7a5fdd8cf249bd61c59a5d59d87, type: 2}
+  - enemyName: moskite
+    enemyNo: 5
+    hp: 5
+    attackPower: 3
+    moveSpeed: 50
+    enemyType: 2
+    itemDropRate: 0
+    enemyOverrideController: {fileID: 22100000, guid: 6282302711d04f749a457277c02d45d7, type: 2}

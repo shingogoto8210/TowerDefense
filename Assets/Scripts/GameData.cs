@@ -18,6 +18,7 @@ public class GameData : MonoBehaviour
     [Header("デバッグモードの切り替え")]
     public bool isDebug; //trueの場合，デバッグモードとする
     public int defenseBaseDurability;
+    public int stageNo;
 
 
     private void Awake()

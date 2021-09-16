@@ -31,13 +31,26 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<EnemyController> enemiesList = new List<EnemyController>();
 
-    void Start()
+    [SerializeField]
+    private DefenseBase defenseBase;
+    [SerializeField]
+    private MapInfo currentMapInfo;
+    [SerializeField]
+    private DefenseBase defenseBasePrefab;
+    private StageDataSO.StageData currentStageData;
+    [SerializeField]
+    private LogoEffect logoEffect;
+
+    IEnumerator Start()
     {
         SetGameState(GameState.Preparate);
+        SetUpStageData();
         StartCoroutine(charaGenerator.SetUpCharaGenerator(this));
         isEnemyGenerate = true;
+        yield return StartCoroutine(logoEffect.PlayOpening());
         SetGameState(GameState.Play);
         StartCoroutine(enemyGenerator.PrepareteEnemyGenerate(this));
+        Debug.Log("敵生成");
         StartCoroutine(TimeToCurrency());
     }
 
@@ -180,5 +193,27 @@ public class GameManager : MonoBehaviour
         SetGameState(GameState.Play);
         ResumeEnemies();
         StartCoroutine(TimeToCurrency());
+    }
+
+    /// <summary>
+    /// ステージデータの設定
+    /// </summary>
+    private void SetUpStageData()
+    {
+        currentStageData = DataBaseManager.instance.stageDataSO.stageDatasList[GameData.instance.stageNo]; //ゲームデータからステージデータを取得
+        generateIntervalTime = currentStageData.generateIntervalTime;　                                    //敵を生成する間隔を設定
+        maxEnemyCount = currentStageData.mapInfo.appearEnemyInfos.Length;                                  //出現する敵の数を設定
+
+        currentMapInfo = Instantiate(currentStageData.mapInfo);                                           //マップを作成
+        charaGenerator.SetUpMapInfo(currentMapInfo.GetMapInfo());
+        charaGenerator.SetUpMapInfoGrid(currentMapInfo.GetMapInfoGrid());
+        defenseBase = Instantiate(defenseBasePrefab, currentMapInfo.GetDefenseBaseTran());　　　　　　　　 //DefenseBase を配置
+
+        PathData[] pathDatas = new PathData[currentStageData.mapInfo.appearEnemyInfos.Length];             //敵の経路の情報を入れる箱
+        for(int i = 0; i < currentStageData.mapInfo.appearEnemyInfos.Length; i++)
+        {
+            pathDatas[i] = currentStageData.mapInfo.appearEnemyInfos[i].enemyPathData;　                   //敵1体ずつ経路を設定 
+        }
+        enemyGenerator.SetUpPathDatas(pathDatas);
     }
 }

@@ -29,37 +29,37 @@ MonoBehaviour:
     charaName: Aria
     attackPower: 2
     attackRange: 0
-    intervalAttackTime: 200
+    intervalAttackTime: 240
     maxAttackCount: 2
     discription: "\u76D7\u8CCA"
     charaAnim: {fileID: 7400000, guid: d155c520e19b6fb4e8d351503cbe4f30, type: 2}
-  - charaNo: 0
-    cost: 0
-    charaSprite: {fileID: 0}
-    charaName: 
-    attackPower: 0
-    attackRange: 0
-    intervalAttackTime: 0
-    maxAttackCount: 0
-    discription: 
-    charaAnim: {fileID: 0}
-  - charaNo: 0
-    cost: 0
-    charaSprite: {fileID: 0}
-    charaName: 
-    attackPower: 0
-    attackRange: 0
-    intervalAttackTime: 0
-    maxAttackCount: 0
-    discription: 
-    charaAnim: {fileID: 0}
-  - charaNo: 0
-    cost: 0
-    charaSprite: {fileID: 0}
-    charaName: 
-    attackPower: 0
-    attackRange: 0
-    intervalAttackTime: 0
-    maxAttackCount: 0
-    discription: 
-    charaAnim: {fileID: 0}
+  - charaNo: 2
+    cost: 200
+    charaSprite: {fileID: 21300000, guid: ca2d3935ba8429b43b2f050ebafc248b, type: 2}
+    charaName: Sala
+    attackPower: 1
+    attackRange: 1
+    intervalAttackTime: 120
+    maxAttackCount: 2
+    discription: "\u731F\u5E2B"
+    charaAnim: {fileID: 7400000, guid: 43ce92e3e1a26bc4e8df8867f003bba4, type: 2}
+  - charaNo: 3
+    cost: 300
+    charaSprite: {fileID: -7084139705275695488, guid: 1edd0a5507a408b4fb7da8ed60d28d83, type: 3}
+    charaName: Maria
+    attackPower: 3
+    attackRange: 2
+    intervalAttackTime: 120
+    maxAttackCount: 2
+    discription: "\u50E7\u4FB6"
+    charaAnim: {fileID: 7400000, guid: 561d083d9bad4704ab290f8ef4fbc665, type: 2}
+  - charaNo: 4
+    cost: 400
+    charaSprite: {fileID: 21300000, guid: 29fd950b24ec33046a0975da1ff5e33d, type: 2}
+    charaName: Authr
+    attackPower: 5
+    attackRange: 3
+    intervalAttackTime: 240
+    maxAttackCount: 1
+    discription: "\u738B"
+    charaAnim: {fileID: 7400000, guid: 31b79d5d7e4ae394fa4363eb51cc9ad6, type: 2}
