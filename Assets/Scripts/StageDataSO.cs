@@ -12,12 +12,16 @@ public class StageDataSO : ScriptableObject
     [Serializable]
     public class StageData
     {
+        public string stageName;
         [Header("ステージ番号")]
         public int stageNo;
-
+        public int generateIntervalTime;
+        public int clearPoint;
+        public int defenseBaseDurability;
+        public Sprite stageSprite;
         [Header("マップ情報")]
         public MapInfo mapInfo;
+        public int maxCharaPlacement;
 
-        public int generateIntervalTime;
     }
 }

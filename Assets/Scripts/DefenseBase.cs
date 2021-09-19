@@ -11,20 +11,22 @@ public class DefenseBase : MonoBehaviour
     public int defenseBaseDurability;
     [SerializeField]
     private DefenseBaseHPSlider coreHPSlider;
-    [SerializeField]
-    //private GameManager gameManager;
+    private GameManager gameManager;
+    private UIManager uiManager;
 
-    private void Start()
+    public void SetUpDefenseBase(GameManager gameManager,int currentDefenseBaseDurability,UIManager uiManager)
     {
+        this.gameManager = gameManager;
+        this.uiManager = uiManager;
         if (GameData.instance.isDebug)
         {
             maxDefenseBaseDurability = GameData.instance.defenseBaseDurability;
         }
         else
         {
-            maxDefenseBaseDurability = defenseBaseDurability;
+            maxDefenseBaseDurability = currentDefenseBaseDurability;
         }
-        defenseBaseDurability = maxDefenseBaseDurability;
+        this.defenseBaseDurability = maxDefenseBaseDurability;
 
     }
 
@@ -34,7 +36,7 @@ public class DefenseBase : MonoBehaviour
         {
             defenseBaseDurability = Mathf.Clamp(defenseBaseDurability - enemy.attackPower, 0, maxDefenseBaseDurability);
             coreHPSlider.UpdateSlider(defenseBaseDurability);
-            if(defenseBaseDurability <= 0)
+            if(defenseBaseDurability <= 0 && gameManager.currentGameState == GameManager.GameState.Play)
             {
                 Debug.Log("Game Over");
             }
