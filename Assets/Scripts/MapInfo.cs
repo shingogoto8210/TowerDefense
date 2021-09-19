@@ -44,6 +44,11 @@ public class MapInfo : MonoBehaviour
         return this.grid;
     }
 
+    public (Tilemap, Grid) GetMapInfoandGrid()
+    {
+        return (this.tilemaps, this.grid);
+    }
+
     /// <summary>
     /// –h‰q‹’“_‚Ìî•ñ‚ğæ“¾
     /// </summary>

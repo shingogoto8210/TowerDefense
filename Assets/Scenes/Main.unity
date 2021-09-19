@@ -756,9 +756,17 @@ MonoBehaviour:
   charaList: []
   currentGameState: 0
   enemiesList: []
-  defenseBase: {fileID: 0}
   currentMapInfo: {fileID: 0}
   defenseBasePrefab: {fileID: 7677802945852387373, guid: 1b420d2574600e84d964dad9fdca3f9e, type: 3}
+  currentStageData:
+    stageName: 
+    stageNo: 0
+    generateIntervalTime: 0
+    clearPoint: 0
+    defenseBaseDurability: 0
+    stageSprite: {fileID: 0}
+    mapInfo: {fileID: 0}
+    maxCharaPlacement: 0
   logoEffect: {fileID: 510357221}
 --- !u!4 &809857750
 Transform:

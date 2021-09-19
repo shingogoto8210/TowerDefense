@@ -134,4 +134,10 @@ public class CharaGenerator : MonoBehaviour
     {
         this.grid = grid;
     }
+
+    public void SetUpMapInfoandGrid((Tilemap tilemaps,Grid grid) map )
+    {
+        this.tilemaps = map.tilemaps;
+        this.grid = map.grid;
+    }
 }

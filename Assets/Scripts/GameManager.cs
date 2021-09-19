@@ -31,12 +31,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<EnemyController> enemiesList = new List<EnemyController>();
 
-    [SerializeField]
     private DefenseBase defenseBase;
     [SerializeField]
     private MapInfo currentMapInfo;
     [SerializeField]
     private DefenseBase defenseBasePrefab;
+    [SerializeField]
     private StageDataSO.StageData currentStageData;
     [SerializeField]
     private LogoEffect logoEffect;
@@ -46,10 +46,11 @@ public class GameManager : MonoBehaviour
         SetGameState(GameState.Preparate);
         SetUpStageData();
         StartCoroutine(charaGenerator.SetUpCharaGenerator(this));
+        defenseBase.SetUpDefenseBase(this, currentStageData.defenseBaseDurability, uiManager);
         isEnemyGenerate = true;
         yield return StartCoroutine(logoEffect.PlayOpening());
         SetGameState(GameState.Play);
-        StartCoroutine(enemyGenerator.PrepareteEnemyGenerate(this));
+        StartCoroutine(enemyGenerator.PrepareteEnemyGenerate(this,currentStageData));
         Debug.Log("敵生成");
         StartCoroutine(TimeToCurrency());
     }
@@ -205,8 +206,9 @@ public class GameManager : MonoBehaviour
         maxEnemyCount = currentStageData.mapInfo.appearEnemyInfos.Length;                                  //出現する敵の数を設定
 
         currentMapInfo = Instantiate(currentStageData.mapInfo);                                           //マップを作成
-        charaGenerator.SetUpMapInfo(currentMapInfo.GetMapInfo());
-        charaGenerator.SetUpMapInfoGrid(currentMapInfo.GetMapInfoGrid());
+        charaGenerator.SetUpMapInfoandGrid(currentMapInfo.GetMapInfoandGrid());
+        //charaGenerator.SetUpMapInfo(currentMapInfo.GetMapInfo());
+        //charaGenerator.SetUpMapInfoGrid(currentMapInfo.GetMapInfoGrid());
         defenseBase = Instantiate(defenseBasePrefab, currentMapInfo.GetDefenseBaseTran());　　　　　　　　 //DefenseBase を配置
 
         PathData[] pathDatas = new PathData[currentStageData.mapInfo.appearEnemyInfos.Length];             //敵の経路の情報を入れる箱

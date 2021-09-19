@@ -1177,7 +1177,7 @@ MonoBehaviour:
     isRandomPos: 0
     enemyPathData: {fileID: 1506213073594247137, guid: 48ccd2c0df9cf2e458e22fc0ad33320a, type: 3}
   - enemyNo: 2
-    isRandomPos: 1
+    isRandomPos: 0
     enemyPathData: {fileID: 1940273693603607770, guid: d56091260d8423e4aa95f181f8ebe88a, type: 3}
 --- !u!1 &789216378570405131
 GameObject:

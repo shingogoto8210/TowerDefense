@@ -12,10 +12,12 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField]
     private DrawPathLine pathLinePrefab;
     private GameManager gameManager;
+    private StageDataSO.StageData stageData;
 
-    public IEnumerator PrepareteEnemyGenerate(GameManager gameManager)
+    public IEnumerator PrepareteEnemyGenerate(GameManager gameManager,StageDataSO.StageData stageData)
     {
         this.gameManager = gameManager;
+        this.stageData = stageData;
         int timer = 0;
 
         while(gameManager.isEnemyGenerate)
@@ -26,7 +28,7 @@ public class EnemyGenerator : MonoBehaviour
                 if (timer > gameManager.generateIntervalTime)
                 {
                     timer = 0;
-                    gameManager.AddEnemyList(GenerateEnemy());
+                    gameManager.AddEnemyList(GenerateEnemy(gameManager.generateEnemyCount));
                     gameManager.JudgeGenerateEnemyEnd();
                 }
             }
@@ -34,12 +36,24 @@ public class EnemyGenerator : MonoBehaviour
         }
     }
 
-    public EnemyController GenerateEnemy()
+    public EnemyController GenerateEnemy(int generateNo)
     {
-        int randomValue = Random.Range(0, pathDatas.Length);
-        EnemyController enemyController = Instantiate(enemyControllerPrefab, pathDatas[randomValue].generateTran.position, Quaternion.identity);
-        Vector3[] paths = pathDatas[randomValue].pathTranArray.Select(x => x.position).ToArray();
-        int enemyNo = Random.Range(0, DataBaseManager.instance.enemyDataSO.enemyDatasList.Count);
+        //int randomValue = Random.Range(0, pathDatas.Length);
+        //EnemyController enemyController = Instantiate(enemyControllerPrefab, pathDatas[randomValue].generateTran.position, Quaternion.identity);
+        //Vector3[] paths = pathDatas[randomValue].pathTranArray.Select(x => x.position).ToArray();
+        //int enemyNo = Random.Range(0, DataBaseManager.instance.enemyDataSO.enemyDatasList.Count);
+        int posNo = generateNo;
+        if (stageData.mapInfo.appearEnemyInfos[generateNo].isRandomPos)
+        {
+            posNo = Random.Range(0, stageData.mapInfo.appearEnemyInfos.Length);
+        }
+        EnemyController enemyController = Instantiate(enemyControllerPrefab, stageData.mapInfo.appearEnemyInfos[posNo].enemyPathData.generateTran.position, Quaternion.identity);
+        int enemyNo = stageData.mapInfo.appearEnemyInfos[generateNo].enemyNo;
+        if(stageData.mapInfo.appearEnemyInfos[generateNo].enemyNo == -1)
+        {
+            enemyNo = Random.Range(0, DataBaseManager.instance.enemyDataSO.enemyDatasList.Count);
+        }
+        Vector3[] paths = stageData.mapInfo.appearEnemyInfos[posNo].enemyPathData.pathTranArray.Select(x => x.position).ToArray();
         enemyController.SetUpEnemyController(paths, gameManager, DataBaseManager.instance.enemyDataSO.enemyDatasList[enemyNo]); //.Find(x => x.enemyNo == enemyNo));
         StartCoroutine(PreparateCreatePathLine(paths, enemyController));
         return enemyController;
