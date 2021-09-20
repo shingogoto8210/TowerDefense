@@ -36,11 +36,19 @@ public class DefenseBase : MonoBehaviour
         {
             defenseBaseDurability = Mathf.Clamp(defenseBaseDurability - enemy.attackPower, 0, maxDefenseBaseDurability);
             coreHPSlider.UpdateSlider(defenseBaseDurability);
+            CreateDamageEffect();
             if(defenseBaseDurability <= 0 && gameManager.currentGameState == GameManager.GameState.Play)
             {
                 Debug.Log("Game Over");
             }
             enemy.DestroyEnemy();
         }
+    }
+
+    private void CreateDamageEffect()
+    {
+        GameObject effect = Instantiate(BattleEffectManager.instance.GetEffect(EffectType.Hit_DefenseBase), transform.position, Quaternion.identity);
+        Destroy(effect, 1.5f);
+
     }
 }

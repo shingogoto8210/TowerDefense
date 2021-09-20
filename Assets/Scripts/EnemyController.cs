@@ -65,9 +65,11 @@ public class EnemyController : MonoBehaviour
     public void CulcDamage(int amount)
     {
         hp = Mathf.Clamp(hp -= amount, 0, maxHp);
+        CreateDamageEffect();
         Debug.Log("écÇËHPÅF" + hp);
         if(hp <= 0)
         {
+            CreateDestroyEffect();
             DestroyEnemy();
         }
         StartCoroutine(WaitMove());
@@ -115,5 +117,19 @@ public class EnemyController : MonoBehaviour
         {
             anim.runtimeAnimatorController = enemyData.enemyOverrideController;
         }
+    }
+
+    private void CreateDamageEffect()
+    {
+        GameObject effect = Instantiate(BattleEffectManager.instance.GetEffect(EffectType.Hit_Enemy), transform.position, Quaternion.identity);
+        Destroy(effect, 1.5f);
+
+    }
+
+    private void CreateDestroyEffect()
+    {
+        GameObject effect = Instantiate(BattleEffectManager.instance.GetEffect(EffectType.Destroy_Enemy), transform.position, Quaternion.identity);
+        Destroy(effect, 1.5f);
+
     }
 }

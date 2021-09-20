@@ -64,6 +64,7 @@ public class CharaController : MonoBehaviour
                     UpdateDisplayAttackCount();
                     if (attackCount <= 0)
                     {
+                        CreateDestroyEffect();
                         Destroy(gameObject);
                         gameManager.RemoveCharaList(this);
                     }
@@ -149,5 +150,12 @@ public class CharaController : MonoBehaviour
     public void OnClickChara()
     {
         gameManager.PrepareteCreateCharaPopUp(this);
+    }
+
+    private void CreateDestroyEffect()
+    {
+        GameObject effect = Instantiate(BattleEffectManager.instance.GetEffect(EffectType.Destroy_Chara), transform.position, Quaternion.identity);
+        Destroy(effect, 1.5f);
+
     }
 }
