@@ -1171,14 +1171,20 @@ MonoBehaviour:
   defenseBaseTran: {fileID: 789216377414369538}
   appearEnemyInfos:
   - enemyNo: 0
-    isRandomPos: 0
+    isRandomPos: 1
     enemyPathData: {fileID: 3419942238759754912, guid: 15554e49f538cdf41be3a82aa85f3810, type: 3}
   - enemyNo: 1
-    isRandomPos: 0
+    isRandomPos: 1
     enemyPathData: {fileID: 1506213073594247137, guid: 48ccd2c0df9cf2e458e22fc0ad33320a, type: 3}
-  - enemyNo: 2
-    isRandomPos: 0
+  - enemyNo: 1
+    isRandomPos: 1
     enemyPathData: {fileID: 1940273693603607770, guid: d56091260d8423e4aa95f181f8ebe88a, type: 3}
+  - enemyNo: 2
+    isRandomPos: 1
+    enemyPathData: {fileID: 3419942238759754912, guid: 15554e49f538cdf41be3a82aa85f3810, type: 3}
+  - enemyNo: 2
+    isRandomPos: 1
+    enemyPathData: {fileID: 1506213073594247137, guid: 48ccd2c0df9cf2e458e22fc0ad33320a, type: 3}
 --- !u!1 &789216378570405131
 GameObject:
   m_ObjectHideFlags: 0

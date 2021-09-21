@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDefenseBaseDurability: 0
-  defenseBaseDurability: 3
+  defenseBaseDurability: 10
   coreHPSlider: {fileID: 7677802946158722756}
 --- !u!1 &7677802946158722779
 GameObject:

@@ -958,8 +958,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currency: 0
-  maxCurrency: 10000
-  currencyIntervalTimer: 120
+  maxCurrency: 1000
+  currencyIntervalTimer: 50
   addCurrencyPoint: 100
   charaPlacementCount: 0
   isDebug: 0

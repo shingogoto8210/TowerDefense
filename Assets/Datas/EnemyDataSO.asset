@@ -15,32 +15,32 @@ MonoBehaviour:
   enemyDatasList:
   - enemyName: Zill
     enemyNo: 0
-    hp: 1
-    attackPower: 1
+    hp: 2
+    attackPower: 3
     moveSpeed: 30
     enemyType: 0
     itemDropRate: 0
     enemyOverrideController: {fileID: 22100000, guid: 215dc326060990e49ac8998010aad382, type: 2}
   - enemyName: Yan
     enemyNo: 1
-    hp: 1
-    attackPower: 2
-    moveSpeed: 50
+    hp: 3
+    attackPower: 3
+    moveSpeed: 40
     enemyType: 0
     itemDropRate: 0
     enemyOverrideController: {fileID: 22100000, guid: 4fddf55f814e80343a1102bff202f0e5, type: 2}
   - enemyName: Winx
     enemyNo: 2
-    hp: 2
-    attackPower: 1
+    hp: 4
+    attackPower: 4
     moveSpeed: 40
     enemyType: 2
     itemDropRate: 0
     enemyOverrideController: {fileID: 22100000, guid: 4b2725e0b885e294c9ac50c0892fbaa4, type: 2}
   - enemyName: hyui
     enemyNo: 3
-    hp: 3
-    attackPower: 1
+    hp: 5
+    attackPower: 5
     moveSpeed: 50
     enemyType: 0
     itemDropRate: 0
@@ -48,16 +48,16 @@ MonoBehaviour:
   - enemyName: tacit
     enemyNo: 4
     hp: 5
-    attackPower: 2
+    attackPower: 6
     moveSpeed: 60
     enemyType: 1
     itemDropRate: 0
     enemyOverrideController: {fileID: 22100000, guid: b3bfb7a5fdd8cf249bd61c59a5d59d87, type: 2}
   - enemyName: moskite
     enemyNo: 5
-    hp: 5
-    attackPower: 3
-    moveSpeed: 50
+    hp: 10
+    attackPower: 8
+    moveSpeed: 70
     enemyType: 2
     itemDropRate: 0
     enemyOverrideController: {fileID: 22100000, guid: 6282302711d04f749a457277c02d45d7, type: 2}

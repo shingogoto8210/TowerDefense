@@ -3006,12 +3006,18 @@ MonoBehaviour:
   grid: {fileID: 8714330394554710216}
   defenseBaseTran: {fileID: 8714330393731713935}
   appearEnemyInfos:
-  - enemyNo: 3
+  - enemyNo: 1
     isRandomPos: 0
     enemyPathData: {fileID: 4829046498388800859, guid: 45ceead415e40d949af6d2f8080134e5, type: 3}
-  - enemyNo: 4
+  - enemyNo: 2
     isRandomPos: 0
     enemyPathData: {fileID: 8842941911217450119, guid: 6a4433125dd630b4a8bb4fdc88ab1579, type: 3}
-  - enemyNo: 5
+  - enemyNo: 2
     isRandomPos: 0
     enemyPathData: {fileID: 4518809827650200086, guid: 488b19aa07c68214b92fda0b092927fd, type: 3}
+  - enemyNo: 3
+    isRandomPos: 1
+    enemyPathData: {fileID: 8842941911217450119, guid: 6a4433125dd630b4a8bb4fdc88ab1579, type: 3}
+  - enemyNo: 3
+    isRandomPos: 1
+    enemyPathData: {fileID: 4829046498388800859, guid: 45ceead415e40d949af6d2f8080134e5, type: 3}

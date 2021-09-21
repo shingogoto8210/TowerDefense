@@ -15,17 +15,33 @@ MonoBehaviour:
   stageDatasList:
   - stageName: "\u30EB\u30FC\u30F4\u30A9\u30B9\u306E\u68EE"
     stageNo: 0
-    generateIntervalTime: 500
+    generateIntervalTime: 240
     clearPoint: 100
-    defenseBaseDurability: 50
+    defenseBaseDurability: 10
     stageSprite: {fileID: 0}
     mapInfo: {fileID: 789216378125037894, guid: 1ec7974cc66202347a10bfb4aa61635d, type: 3}
     maxCharaPlacement: 5
   - stageName: "\u30C0\u30FC\u30AB\u30FC\u30AF\u8352\u539F"
     stageNo: 1
-    generateIntervalTime: 300
+    generateIntervalTime: 240
     clearPoint: 300
-    defenseBaseDurability: 80
+    defenseBaseDurability: 10
     stageSprite: {fileID: 0}
     mapInfo: {fileID: 8714330395419655115, guid: 3cf94a35c8e38854088ed154c1e05764, type: 3}
     maxCharaPlacement: 5
+  - stageName: "\u706B\u5C71"
+    stageNo: 2
+    generateIntervalTime: 200
+    clearPoint: 400
+    defenseBaseDurability: 10
+    stageSprite: {fileID: 0}
+    mapInfo: {fileID: 1708353286639778377, guid: f1da970b1e84af649843db7e21764f9f, type: 3}
+    maxCharaPlacement: 3
+  - stageName: "\u96EA\u5C71"
+    stageNo: 3
+    generateIntervalTime: 150
+    clearPoint: 500
+    defenseBaseDurability: 10
+    stageSprite: {fileID: 0}
+    mapInfo: {fileID: 2543099368702232079, guid: 9717c4e2fc186b74d90dd7a3c0ca97ce, type: 3}
+    maxCharaPlacement: 3
