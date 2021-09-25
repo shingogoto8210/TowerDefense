@@ -29,7 +29,7 @@ MonoBehaviour:
     stageSprite: {fileID: 0}
     mapInfo: {fileID: 8714330395419655115, guid: 3cf94a35c8e38854088ed154c1e05764, type: 3}
     maxCharaPlacement: 5
-  - stageName: "\u706B\u5C71"
+  - stageName: "\u30C7\u30EB\u30BF\u706B\u5C71"
     stageNo: 2
     generateIntervalTime: 200
     clearPoint: 400
@@ -37,7 +37,7 @@ MonoBehaviour:
     stageSprite: {fileID: 0}
     mapInfo: {fileID: 1708353286639778377, guid: f1da970b1e84af649843db7e21764f9f, type: 3}
     maxCharaPlacement: 3
-  - stageName: "\u96EA\u5C71"
+  - stageName: "\u30E1\u30EB\u30F3\u306E\u96EA\u5C71"
     stageNo: 3
     generateIntervalTime: 150
     clearPoint: 500

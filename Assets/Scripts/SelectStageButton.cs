@@ -11,6 +11,6 @@ public class SelectStageButton : MonoBehaviour
     public void OnClickSelectStageNo ()
     {
         GameData.instance.stageNo = this.stageNo;
-        SceneManager.LoadScene("Main");
+        SceneStateManager.instance.PreparateNextScene(SceneType.Battle);
     }
 }
