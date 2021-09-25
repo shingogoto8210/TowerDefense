@@ -120,6 +120,8 @@ public class GameManager : MonoBehaviour
         if(destroyEnemyCount >= maxEnemyCount)
         {
             Debug.Log("Game Clear");
+            GameData.instance.clearStageNosList.Add(currentStageData.stageNo + 1);
+            SceneStateManager.instance.PreparateNextScene(SceneType.StageSelect);
         }
     }
 

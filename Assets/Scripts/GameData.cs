@@ -20,6 +20,8 @@ public class GameData : MonoBehaviour
     public int defenseBaseDurability;
     public int stageNo;
 
+    public List<int> clearStageNosList = new List<int>();
+
 
     private void Awake()
     {
@@ -32,5 +34,7 @@ public class GameData : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        clearStageNosList.Add(0);
     }
 }

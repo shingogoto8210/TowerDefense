@@ -49,6 +49,13 @@ public class SceneStateManager : MonoBehaviour
     {
         SceneManager.LoadScene(nextLoadSceneName.ToString());
         yield return null;
-    }
 
+
+        if (fade)
+        {
+            Scene scene = SceneManager.GetSceneByName(nextLoadSceneName.ToString());
+            yield return new WaitUntil(() => scene.isLoaded);
+            fade.FadeOut(fadeDuration);
+        }
+    }
 }
