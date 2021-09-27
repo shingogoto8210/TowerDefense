@@ -1002,3 +1002,11 @@ Received Import Request.
 Start importing Assets/Scenes/Battle.unity using Guid(ee4eef9a2d1863f48b1931d1dcfbae12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be2bf88e15cc6f83ed47bb4f72b2a398') in 0.064310 seconds 
   Import took 0.082679 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 215.237432 seconds.
+  path: Assets/Scenes/StageSelect.unity
+  artifactKey: Guid(39360d140302ad14b960a87104979fe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/StageSelect.unity using Guid(39360d140302ad14b960a87104979fe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c8fca9a39b4902d4a2982efb78e9b8b') in 0.619826 seconds 
+  Import took 1.677790 seconds .
+

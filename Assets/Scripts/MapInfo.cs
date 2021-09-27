@@ -34,16 +34,6 @@ public class MapInfo : MonoBehaviour
     /// ƒ}ƒbƒv‚Ìî•ñ‚ğæ“¾
     /// </summary>
     /// <returns></returns>
-    public Tilemap GetMapInfo()
-    {
-        return this.tilemaps;
-    }
-
-    public Grid GetMapInfoGrid()
-    {
-        return this.grid;
-    }
-
     public (Tilemap, Grid) GetMapInfoandGrid()
     {
         return (this.tilemaps, this.grid);

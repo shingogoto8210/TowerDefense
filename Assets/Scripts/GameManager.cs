@@ -112,14 +112,15 @@ public class GameManager : MonoBehaviour
         RemoveEnemyList(enemyController);
         destroyEnemyCount++;
         Debug.Log("”j‰ó‚µ‚½“G‚Ì”" + destroyEnemyCount);
-        JudgeGameClear();
+        StartCoroutine(JudgeGameClear());
     }
 
-    public void JudgeGameClear()
+    public IEnumerator JudgeGameClear()
     {
         if(destroyEnemyCount >= maxEnemyCount)
         {
             Debug.Log("Game Clear");
+            yield return StartCoroutine(logoEffect.PlayClear());
             GameData.instance.clearStageNosList.Add(currentStageData.stageNo + 1);
             SceneStateManager.instance.PreparateNextScene(SceneType.StageSelect);
         }

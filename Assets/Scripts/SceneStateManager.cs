@@ -10,7 +10,6 @@ public class SceneStateManager : MonoBehaviour
     private Fade fade;
     [SerializeField,Header("フェードの時間")]
     private float fadeDuration = 1.0f;
-    // Start is called before the first frame update
     void Awake()
     {
         if(instance == null)
@@ -53,8 +52,8 @@ public class SceneStateManager : MonoBehaviour
 
         if (fade)
         {
-            Scene scene = SceneManager.GetSceneByName(nextLoadSceneName.ToString());
-            yield return new WaitUntil(() => scene.isLoaded);
+            //Scene scene = SceneManager.GetSceneByName(nextLoadSceneName.ToString());
+            //yield return new WaitUntil(() => scene.isLoaded);
             fade.FadeOut(fadeDuration);
         }
     }
