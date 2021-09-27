@@ -19,8 +19,9 @@ public class GameData : MonoBehaviour
     public bool isDebug; //trueの場合，デバッグモードとする
     public int defenseBaseDurability;
     public int stageNo;
-
     public List<int> clearStageNosList = new List<int>();
+    public int totalClearPoint;
+    public List<int> engageCharaNosList = new List<int>();
 
 
     private void Awake()
@@ -36,5 +37,7 @@ public class GameData : MonoBehaviour
         }
 
         clearStageNosList.Add(0);
+        totalClearPoint = 0;
+        engageCharaNosList.Add(0);
     }
 }

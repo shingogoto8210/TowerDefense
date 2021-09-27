@@ -9,6 +9,8 @@ public class StageSelectManager : MonoBehaviour
     private SelectStageButton btnPrefab;
     public List<Transform> btnsTranList = new List<Transform>();
     public List<SelectStageButton> selectStageButtonsList = new List<SelectStageButton>();
+    [SerializeField]
+    private Text txtTotalClearPoint;
    
     void Start()
     {
@@ -19,6 +21,11 @@ public class StageSelectManager : MonoBehaviour
             selectStageButtonsList.Add(btn);
         }
         CheckClear();
+    }
+
+    private void Update()
+    {
+        UpdateDisplayTotalClearPoint();
     }
 
     private void CheckClear()
@@ -36,4 +43,10 @@ public class StageSelectManager : MonoBehaviour
 
         }
     }
+
+    public void UpdateDisplayTotalClearPoint()
+    {
+        txtTotalClearPoint.text = GameData.instance.totalClearPoint.ToString();
+    }
+
 }

@@ -44,11 +44,12 @@ public class GameManager : MonoBehaviour
     IEnumerator Start()
     {
         SetGameState(GameState.Preparate);
+        //RefreshGameData();
         SetUpStageData();
         StartCoroutine(charaGenerator.SetUpCharaGenerator(this));
         defenseBase.SetUpDefenseBase(this, currentStageData.defenseBaseDurability, uiManager);
-        isEnemyGenerate = true;
         yield return StartCoroutine(logoEffect.PlayOpening());
+        isEnemyGenerate = true;
         SetGameState(GameState.Play);
         StartCoroutine(enemyGenerator.PrepareteEnemyGenerate(this,currentStageData));
         Debug.Log("ìGê∂ê¨");
@@ -112,17 +113,15 @@ public class GameManager : MonoBehaviour
         RemoveEnemyList(enemyController);
         destroyEnemyCount++;
         Debug.Log("îjâÛÇµÇΩìGÇÃêî" + destroyEnemyCount);
-        StartCoroutine(JudgeGameClear());
+        JudgeGameClear();
     }
 
-    public IEnumerator JudgeGameClear()
+    public void JudgeGameClear()
     {
         if(destroyEnemyCount >= maxEnemyCount)
         {
             Debug.Log("Game Clear");
-            yield return StartCoroutine(logoEffect.PlayClear());
-            GameData.instance.clearStageNosList.Add(currentStageData.stageNo + 1);
-            SceneStateManager.instance.PreparateNextScene(SceneType.StageSelect);
+            StartCoroutine(GameClearAndResult());
         }
     }
 
@@ -220,5 +219,30 @@ public class GameManager : MonoBehaviour
             pathDatas[i] = currentStageData.mapInfo.appearEnemyInfos[i].enemyPathData;Å@                   //ìG1ëÃÇ∏Ç¬åoòHÇê›íË 
         }
         enemyGenerator.SetUpPathDatas(pathDatas);
+    }
+
+    private IEnumerator GameClearAndResult()
+    {
+        GameUpToCommon();
+        yield return StartCoroutine(logoEffect.PlayClear());
+        GameData.instance.totalClearPoint += currentStageData.clearPoint;
+        GameData.instance.stageNo++;
+        if (!GameData.instance.clearStageNosList.Contains(GameData.instance.stageNo))
+        {
+            GameData.instance.clearStageNosList.Add(GameData.instance.stageNo);
+        }
+        SceneStateManager.instance.PreparateNextScene(SceneType.StageSelect);
+    }
+
+    private void GameUpToCommon()
+    {
+        SetGameState(GameState.GameUp);
+        charaGenerator.InactivatePlacementCharaSelectPopUp();
+    }
+
+    public void GameOver()
+    {
+        GameUpToCommon();
+        SceneStateManager.instance.PreparateNextScene(SceneType.StageSelect);
     }
 }

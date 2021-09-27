@@ -10,11 +10,11 @@ public class CharaData
     public int cost;
     public Sprite charaSprite;
     public string charaName;
-
     public int attackPower;
     public AttackRangeType attackRange;
     public float intervalAttackTime;
     public int maxAttackCount;
+    public int engagePoint;
 
     [Multiline]
     public string discription;
