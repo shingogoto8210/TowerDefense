@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,8 +39,6 @@ public class GameManager : MonoBehaviour
     private DefenseBase defenseBasePrefab;
     [SerializeField]
     private StageDataSO.StageData currentStageData;
-    [SerializeField]
-    private LogoEffect logoEffect;
 
     IEnumerator Start()
     {
@@ -48,7 +47,8 @@ public class GameManager : MonoBehaviour
         SetUpStageData();
         StartCoroutine(charaGenerator.SetUpCharaGenerator(this));
         defenseBase.SetUpDefenseBase(this, currentStageData.defenseBaseDurability, uiManager);
-        yield return StartCoroutine(logoEffect.PlayOpening());
+        yield return StartCoroutine(uiManager.CreateOpeningLogo());
+        yield return StartCoroutine(uiManager.openingLogo.PlayOpening());
         isEnemyGenerate = true;
         SetGameState(GameState.Play);
         StartCoroutine(enemyGenerator.PrepareteEnemyGenerate(this,currentStageData));
@@ -224,7 +224,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator GameClearAndResult()
     {
         GameUpToCommon();
-        yield return StartCoroutine(logoEffect.PlayClear());
+        yield return StartCoroutine(uiManager.CreateClearLogo());
+        yield return StartCoroutine(uiManager.clearLogo.PlayClear());
         GameData.instance.totalClearPoint += currentStageData.clearPoint;
         GameData.instance.stageNo++;
         if (!GameData.instance.clearStageNosList.Contains(GameData.instance.stageNo))
@@ -238,11 +239,17 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GameState.GameUp);
         charaGenerator.InactivatePlacementCharaSelectPopUp();
+        for(int i = 0; i < enemiesList.Count; i++)
+        {
+            enemiesList[i].tween.Kill();
+        }
     }
 
-    public void GameOver()
+    public IEnumerator GameOver()
     {
         GameUpToCommon();
+        yield return StartCoroutine(uiManager.CreateGameOverLogo());
+        yield return StartCoroutine(uiManager.gameoverLogo.PlayGameOver());
         SceneStateManager.instance.PreparateNextScene(SceneType.StageSelect);
     }
 }

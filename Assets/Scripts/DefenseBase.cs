@@ -40,7 +40,7 @@ public class DefenseBase : MonoBehaviour
             if(defenseBaseDurability <= 0 && gameManager.currentGameState == GameManager.GameState.Play)
             {
                 Debug.Log("Game Over");
-                gameManager.GameOver();
+                StartCoroutine(gameManager.GameOver());
             }
             enemy.DestroyEnemy();
         }

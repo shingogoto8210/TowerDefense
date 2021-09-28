@@ -8,48 +8,41 @@ using Coffee.UIExtensions;
 public class LogoEffect : InfoManager
 {
     [SerializeField]
-    private Image imgStart;
+    private Image img;
+
     [SerializeField]
-    private Image imgClear;
-    [SerializeField]
-    private ShinyEffectForUGUI shinyEffectOpening;
-    [SerializeField]
-    private ShinyEffectForUGUI shinyEffectClear;
+    private ShinyEffectForUGUI shinyEffect;
+
 
     public IEnumerator PlayOpening()
     {
-        SetUpImgStart();
         canvasGroup.alpha = 0.0f;
         Sequence sequence = DOTween.Sequence();
         sequence.Append(canvasGroup.DOFade(1.0f, 0.5f));
-        sequence.Append(imgStart.DOFade(1.0f, 0.5f).OnComplete(() => shinyEffectOpening.Play(1.0f)));
-        sequence.AppendInterval(1.0f);
-        sequence.Append(canvasGroup.DOFade(0.0f, 0.5f));//.OnComplete(() => Destroy(gameObject));
-        yield return new WaitForSeconds(3.0f);
-    }
-
-    public IEnumerator PlayClear()
-    {
-        SetUpImgClear();
-        canvasGroup.alpha = 0.0f;
-        Sequence sequence = DOTween.Sequence();
-        sequence.Append(canvasGroup.DOFade(1.0f, 0.5f));
-        sequence.Append(imgClear.DOFade(1.0f, 0.5f).OnComplete(() => shinyEffectClear.Play(1.0f)));
+        sequence.Append(img.DOFade(1.0f, 0.5f).OnComplete(() => shinyEffect.Play(1.0f)));
         sequence.AppendInterval(1.0f);
         sequence.Append(canvasGroup.DOFade(0.0f, 0.5f)).OnComplete(() => Destroy(gameObject));
         yield return new WaitForSeconds(3.0f);
     }
 
-    private void SetUpImgStart()
+    public IEnumerator PlayClear()
     {
-        imgStart.enabled = true;
-        imgClear.enabled = false;
+        canvasGroup.alpha = 0.0f;
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(canvasGroup.DOFade(1.0f, 0.5f));
+        sequence.Append(img.DOFade(1.0f, 0.5f).OnComplete(() => shinyEffect.Play(1.0f)));
+        sequence.AppendInterval(1.0f);
+        sequence.Append(canvasGroup.DOFade(0.0f, 0.5f)).OnComplete(() => Destroy(gameObject));
+        yield return new WaitForSeconds(3.0f);
     }
-
-    private void SetUpImgClear()
+    public IEnumerator PlayGameOver()
     {
-        imgStart.enabled = false;
-        imgClear.enabled = true;
+        canvasGroup.alpha = 0.0f;
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(canvasGroup.DOFade(1.0f, 0.5f));
+        sequence.Append(img.DOFade(1.0f, 0.5f).OnComplete(() => shinyEffect.Play(1.0f)));
+        sequence.AppendInterval(1.0f);
+        sequence.Append(canvasGroup.DOFade(0.0f, 0.5f)).OnComplete(() => Destroy(gameObject));
+        yield return new WaitForSeconds(3.0f);
     }
-
 }

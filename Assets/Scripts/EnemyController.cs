@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     private int maxHp;
     public int hp;
     public int attackPower;
-    private Tween tween;
+    public Tween tween;
     private Vector3[] paths;
     private Animator anim;
     private GameManager gameManager;
