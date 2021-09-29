@@ -12,6 +12,7 @@ public class SelectCharaDetail : MonoBehaviour
     private Image imgChara;
     private PlacementCharaSelectPopUp placementCharaSelectPopUp;
     private CharaData charaData;
+    private EngageCharaPopUp engageCharaPopUp;
 
     /// <summary>
     /// SelectCharaDetailの設定
@@ -22,23 +23,14 @@ public class SelectCharaDetail : MonoBehaviour
     {
         this.placementCharaSelectPopUp = placementCharaSelectPopUp;
         this.charaData = charaData;
-
-        //TODO ボタンを押せない状態に切り替える
-
         imgChara.sprite = this.charaData.charaSprite;
-
-        //TODOカレンシーの値が更新される度にコストが支払えるか確認する
-
         //ボタンにメソッドを登録
         btnSelectCharaDetail.onClick.AddListener(OnClickSelectCharaDetail);
-
-        //TODO　コストに応じてボタンを押せるかどうかを切り替える
     }
 
     private void OnClickSelectCharaDetail()
     {
         //TODO　アニメ演出
-
         //タップしたSelectCharaDetailの情報をポップアップに送る
         placementCharaSelectPopUp.SetSelectCharaDetail(charaData);
     }
@@ -53,8 +45,29 @@ public class SelectCharaDetail : MonoBehaviour
             //return false;
     }
 
+    public bool JudgePermissionEngagePoint(int totalClearPoint)
+    {
+        return charaData.engagePoint <= totalClearPoint ? true : false;
+    }
+
     public void ChangeActiveButton(bool isButtonActive)
     {
             btnSelectCharaDetail.interactable = isButtonActive;
+    }
+
+    public void SetUpSelectCharaDetail(EngageCharaPopUp EngageCharaPopUp, CharaData charaData)
+    {
+        this.engageCharaPopUp = EngageCharaPopUp;
+        this.charaData = charaData;
+        imgChara.sprite = this.charaData.charaSprite;
+        //ボタンにメソッドを登録
+        btnSelectCharaDetail.onClick.AddListener(OnClickEngageSelectCharaDetail);
+    }
+
+    private void OnClickEngageSelectCharaDetail()
+    {
+        //TODO　アニメ演出
+        //タップしたSelectCharaDetailの情報をポップアップに送る
+        engageCharaPopUp.SetSelectCharaDetail(charaData);
     }
 }

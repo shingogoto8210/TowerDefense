@@ -105,6 +105,7 @@ public class CharaGenerator : MonoBehaviour
     {
         for(int i = 0; i < DataBaseManager.instance.charaDataSO.charaDataList.Count; i++)
         {
+            if(GameData.instance.engageCharaNosList.Contains(DataBaseManager.instance.charaDataSO.charaDataList[i].charaNo))
             charaDatasList.Add(DataBaseManager.instance.charaDataSO.charaDataList[i]);
         }
     }
@@ -123,16 +124,6 @@ public class CharaGenerator : MonoBehaviour
         chara.SetUpChara(charaData,gameManager);
         Debug.Log(charaData.charaName);
         gameManager.AddCharaList(chara);
-    }
-
-    public void SetUpMapInfo (Tilemap tilemaps)
-    {
-        this.tilemaps = tilemaps;
-    }
-
-    public void SetUpMapInfoGrid(Grid grid)
-    {
-        this.grid = grid;
     }
 
     public void SetUpMapInfoandGrid((Tilemap tilemaps,Grid grid) map )

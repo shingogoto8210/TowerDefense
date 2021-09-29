@@ -23,7 +23,6 @@ public class GameData : MonoBehaviour
     public int totalClearPoint;
     public List<int> engageCharaNosList = new List<int>();
 
-
     private void Awake()
     {
         if (instance == null)
