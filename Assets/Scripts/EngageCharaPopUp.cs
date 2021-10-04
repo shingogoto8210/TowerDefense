@@ -88,7 +88,11 @@ public class EngageCharaPopUp : MonoBehaviour
 
     private void OnClickSubmitChooseChara()
     {
-        if (chooseCharaData.engagePoint > GameData.instance.totalClearPoint)
+        if (GameData.instance.engageCharaNosList.Contains(chooseCharaData.charaNo))
+        {
+            return;
+        }
+        else if (chooseCharaData.engagePoint > GameData.instance.totalClearPoint)
         {
             return;
         }
@@ -134,11 +138,11 @@ public class EngageCharaPopUp : MonoBehaviour
             {
                 if (GameData.instance.engageCharaNosList.Contains(DataBaseManager.instance.charaDataSO.charaDataList[i].charaNo))
                 {
-                    selectCharaDetailsList[i].ChangeActiveButton(false);
+                    //selectCharaDetailsList[i].ChangeActiveButton(false);
                     Instantiate(imgContractStamp, selectCharaDetailsList[i].transform);
                     continue;
                 }
-                selectCharaDetailsList[i].ChangeActiveButton(selectCharaDetailsList[i].JudgePermissionEngagePoint(GameData.instance.totalClearPoint));
+                //selectCharaDetailsList[i].ChangeActiveButton(selectCharaDetailsList[i].JudgePermissionEngagePoint(GameData.instance.totalClearPoint));
             }
         }
     }

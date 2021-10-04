@@ -447,14 +447,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currency: 0
   maxCurrency: 1000
-  currencyIntervalTimer: 50
+  currencyIntervalTimer: 150
   addCurrencyPoint: 100
   charaPlacementCount: 0
   isDebug: 0
   defenseBaseDurability: 0
   stageNo: 0
   clearStageNosList: 
-  totalClearPoint: 0
+  totalClearPoint: 10000
   engageCharaNosList: 
 --- !u!4 &273501795
 Transform:
@@ -1248,8 +1248,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 170, y: -53}
-  m_SizeDelta: {x: 100, y: 74.5233}
+  m_AnchoredPosition: {x: 189.8, y: -53}
+  m_SizeDelta: {x: 180.1239, y: 74.523}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1328720251
 MonoBehaviour:

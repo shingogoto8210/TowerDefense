@@ -233,12 +233,14 @@ public class GameManager : MonoBehaviour
             GameData.instance.clearStageNosList.Add(GameData.instance.stageNo);
         }
         SceneStateManager.instance.PreparateNextScene(SceneType.StageSelect);
+        GameData.instance.SaveClearPoint();
     }
 
     private void GameUpToCommon()
     {
         SetGameState(GameState.GameUp);
         charaGenerator.InactivatePlacementCharaSelectPopUp();
+        GameData.instance.currency = 0;
         for(int i = 0; i < enemiesList.Count; i++)
         {
             enemiesList[i].tween.Kill();

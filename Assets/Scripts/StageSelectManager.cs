@@ -14,6 +14,7 @@ public class StageSelectManager : MonoBehaviour
    
     void Start()
     {
+        GameData.instance.LoadClearPoint();
         for(int i = 0; i < DataBaseManager.instance.stageDataSO.stageDatasList.Count; i++)
         {
             SelectStageButton btn = Instantiate(btnPrefab, btnsTranList[i], false);

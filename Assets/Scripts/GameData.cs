@@ -22,6 +22,7 @@ public class GameData : MonoBehaviour
     public List<int> clearStageNosList = new List<int>();
     public int totalClearPoint;
     public List<int> engageCharaNosList = new List<int>();
+    private const string CLEAR_POINT_KEY = "clearPoint";
 
     private void Awake()
     {
@@ -35,8 +36,26 @@ public class GameData : MonoBehaviour
             Destroy(gameObject);
         }
 
+        //Debug用
+        //SaveClearPoint();
+
+        //LoadClearPoint();
+
         clearStageNosList.Add(0);
-        totalClearPoint = 0;
+        //totalClearPoint = 0;
         engageCharaNosList.Add(0);
+    }
+
+    public void SaveClearPoint()
+    {
+        PlayerPrefs.SetInt(CLEAR_POINT_KEY, totalClearPoint);
+        PlayerPrefs.Save();
+        Debug.Log("セーブ：" + CLEAR_POINT_KEY + ":"+totalClearPoint);
+    }
+
+    public void LoadClearPoint()
+    {
+        totalClearPoint = PlayerPrefs.GetInt(CLEAR_POINT_KEY, 0);
+        Debug.Log("ロード：" + CLEAR_POINT_KEY + ":" + totalClearPoint);
     }
 }
