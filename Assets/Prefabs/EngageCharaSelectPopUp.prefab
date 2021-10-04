@@ -1030,6 +1030,8 @@ MonoBehaviour:
   selectCharaDetailPrefab: {fileID: 6122847731784615065, guid: 19e99a97d82bdac44919d01ef754893f, type: 3}
   selectCharaDetailTran: {fileID: 508667584773189184}
   selectCharaDetailsList: []
+  contractDetailPrefab: {fileID: 2933169922005356161, guid: 133c5fd603c80d74aa6dc589213f8ca6, type: 3}
+  imgContractStamp: {fileID: 5270558660069384526, guid: 3301b1aec6cc8e94c91e200445c6024d, type: 3}
 --- !u!1 &1207844415835121048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,7 +2438,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 7
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

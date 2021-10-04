@@ -34,7 +34,12 @@ public class EngageCharaPopUp : MonoBehaviour
     private List<SelectCharaDetail> selectCharaDetailsList = new List<SelectCharaDetail>();
     private CharaData chooseCharaData;
     private EngageButton engageButton;
-
+    [SerializeField]
+    private ContractDetail contractDetailPrefab;
+    private ContractDetail contractDetail;
+    private SelectCharaDetail selectCharaDetail;
+    [SerializeField]
+    private Image imgContractStamp;
     /// <summary>
     /// ポップアップの設定
     /// </summary>
@@ -53,7 +58,7 @@ public class EngageCharaPopUp : MonoBehaviour
         for (int i = 0; i < haveCharaDataList.Count; i++)
         {
             //ボタンのゲームオブジェクトを生成
-            SelectCharaDetail selectCharaDetail = Instantiate(selectCharaDetailPrefab, selectCharaDetailTran, false);
+            selectCharaDetail = Instantiate(selectCharaDetailPrefab, selectCharaDetailTran, false);
             //ボタンのゲームオブジェクトの設定（CharaDataを設定する）
             selectCharaDetail.SetUpSelectCharaDetail(this, haveCharaDataList[i]);
             selectCharaDetailsList.Add(selectCharaDetail);
@@ -88,8 +93,10 @@ public class EngageCharaPopUp : MonoBehaviour
             return;
         }
         EngageChara();
-        //charaGenerator.CreateChooseChara(chooseCharaData);
         HidePopUp();
+        contractDetail = Instantiate(contractDetailPrefab, this.gameObject.transform.parent, false);
+        contractDetail.SetUpContractDetail(chooseCharaData);
+        
     }
 
     private void OnClickClosePopUp()
@@ -128,9 +135,9 @@ public class EngageCharaPopUp : MonoBehaviour
                 if (GameData.instance.engageCharaNosList.Contains(DataBaseManager.instance.charaDataSO.charaDataList[i].charaNo))
                 {
                     selectCharaDetailsList[i].ChangeActiveButton(false);
+                    Instantiate(imgContractStamp, selectCharaDetailsList[i].transform);
                     continue;
                 }
-                //selectCharaDetailsList[i].ChangeActiveButton(selectCharaDetailsList[i].JudgePermissionCost(GameData.instance.currency));
                 selectCharaDetailsList[i].ChangeActiveButton(selectCharaDetailsList[i].JudgePermissionEngagePoint(GameData.instance.totalClearPoint));
             }
         }
